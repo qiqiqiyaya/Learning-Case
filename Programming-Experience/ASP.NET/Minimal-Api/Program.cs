@@ -24,20 +24,62 @@
 //    httpcontext => httpcontext.Response.WriteAsync("World!");
 
 
-var app = WebApplication.Create(args);
-IApplicationBuilder builder = app;
-builder.Use(HelloMiddleware)
-    .Use(WorldMiddleware);
+
+//var app = WebApplication.Create(args);
+//IApplicationBuilder builder = app;
+//builder.Use(HelloMiddleware)
+//    .Use(WorldMiddleware);
+//app.Run();
+
+////Func<HttpContext,RequestDelegate,Task>
+////Func<HttpContext,Func<Task>,Task>
+//static async Task HelloMiddleware(HttpContext context, RequestDelegate next)
+//{
+//    await context.Response.WriteAsync("Hello,");
+//    await next(context);
+//}
+
+//static Task WorldMiddleware(HttpContext context, RequestDelegate next) =>
+//    context.Response.WriteAsync("World!");
+
+
+// IMiddleware 中间件
+
+//using App.Middlewares;
+//using App.Services;
+
+//var builder = WebApplication.CreateBuilder(args);
+//builder.Services.AddSingleton<IGreeter, Greeter>()
+//    .AddSingleton<GreetingMiddleware>();
+
+//var app= builder.Build();
+//app.UseMiddleware<GreetingMiddleware>();
+//app.Run();
+
+
+
+// convention middleware
+// Create middleware by convention
+//using App.Middlewares;
+//using App.Services;
+
+//var builder = WebApplication.CreateBuilder(args);
+//builder.Services.AddSingleton<IGreeter, Greeter>();
+
+//var app = builder.Build();
+//// GreetingMiddleware will register when process app.UseMiddleware<GreetingMiddleware>() . GreetingMiddleware is a singleton service.
+//app.UseMiddleware<Greeting2Middleware>();
+//app.Run();
+
+
+
+using App.Middlewares;
+using App.Services;
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddSingleton<IGreeter, Greeter>();
+
+var app = builder.Build();
+// GreetingMiddleware will register when process app.UseMiddleware<GreetingMiddleware>() . GreetingMiddleware is a singleton service.
+app.UseMiddleware<Greeting3Middleware>();
 app.Run();
-
-//Func<HttpContext,RequestDelegate,Task>
-//Func<HttpContext,Func<Task>,Task>
-static async Task HelloMiddleware(HttpContext context, RequestDelegate next)
-{
-    await context.Response.WriteAsync("Hello,");
-    await next(context);
-}
-
-static Task WorldMiddleware(HttpContext context, RequestDelegate next) =>
-    context.Response.WriteAsync("World!");
- 
