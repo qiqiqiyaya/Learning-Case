@@ -1,0 +1,21 @@
+﻿
+syntax="proto3";
+option csharp_namespace="Proto.App";
+
+service Calculator{
+	rpc Add (InputMessage) returns (OutputMessage);
+	rpc Substract (InputMessage) returns (OutputMessage);
+	rpc Mutiply (InputMessage) returns (OutputMessage);
+	rpc Divide (InputMessage) returns (OutputMessage);
+}
+
+message InputMessage{
+	int32 x=1;
+	int32 y=2;
+}
+
+message OutputMessage{
+	int32	status=1;
+	int32	result=2;
+	string	error=3;
+}
