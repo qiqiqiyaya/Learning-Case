@@ -13,6 +13,8 @@ namespace RedisCacheUsing
         public const string StringTest3 = "st1";
 
 
+        public const string SetTest1 = "set1";
 
+        public const string HashTest1 = "hash1";
     }
 }
