@@ -12,15 +12,35 @@ builder.Services.AddDistributedRedisCache(options =>
     .AddSingleton<RedisReaderMiddleware>();
 
 var app = builder.Build();
-SetCache(app.Services.GetService<IDistributedCache>());
 
-app.UseMiddleware<RedisReaderMiddleware>();
+//app.UseMiddleware<RedisReaderMiddleware>();
+
+app.MapGet("/", async p =>
+ {
+     await p.Response.WriteAsync("current time :" + DateTime.Now.ToLongTimeString());
+ });
+
+
+app.MapGet("/set", async p =>
+{
+    var cache = p.RequestServices.GetService<IDistributedCache>();
+    SetCache(cache);
+    await p.Response.WriteAsync("ok!!!");
+});
+
+app.MapGet("/get", async p =>
+{
+    var cache = p.RequestServices.GetService<IDistributedCache>();
+    var environment = p.RequestServices.GetService<IHostEnvironment>();
+
+    var test1 = await cache.GetStringAsync(CacheKeys.Test1);
+    var test2 = await cache.GetStringAsync(CacheKeys.Test2);
+    await p.Response.WriteAsync("test1:" + test1 + "<br/>test2" + test2 + "<br/>environment:" + environment.EnvironmentName);
+});
 app.Run();
 
-
-void SetCache(IDistributedCache? cache)
+async void SetCache(IDistributedCache? cache)
 {
-    if (cache == null) throw new NullReferenceException(nameof(IDistributedCache) + " is null.");
-    cache.SetString(CacheKeys.Test1, "12321312321321321");
-    cache.SetString(CacheKeys.Test2, "22222222222222222222");
+    await cache.SetStringAsync(CacheKeys.Test1, "12321312321321321");
+    await cache.SetStringAsync(CacheKeys.Test2, "22222222222222222222");
 }

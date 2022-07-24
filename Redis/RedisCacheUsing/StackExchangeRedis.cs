@@ -11,7 +11,7 @@ namespace RedisCacheUsing
     {
         protected readonly ConnectionMultiplexer ConnectionMultiplexer;
         protected readonly IDatabase RedisCache;
-        protected readonly TimeSpan ExpiryTime = TimeSpan.FromMinutes(1);
+        protected readonly TimeSpan ExpiryTime = TimeSpan.FromMinutes(30);
 
         public StackExchangeRedis(ConnectionMultiplexer connectionMultiplexer)
         {
@@ -27,6 +27,10 @@ namespace RedisCacheUsing
         /// <param name="value">值</param>
         /// <returns></returns>
         public Task<bool> StringSetAsync(string key, string value)
+        {
+            return RedisCache.StringSetAsync(key, value, ExpiryTime);
+        }
+        public Task<bool> StringSetAsync(string key, RedisValue value)
         {
             return RedisCache.StringSetAsync(key, value, ExpiryTime);
         }
@@ -47,9 +51,15 @@ namespace RedisCacheUsing
             return value.ToString();
         }
 
-        public async Task<bool> StringGetBitAsync(string key)
+        public async Task<bool> StringGetBitAsync(string key, long offset)
         {
-            var value = await RedisCache.StringGetBitAsync(key,0);
+            var value = await RedisCache.StringGetBitAsync(key, offset);
+            return value;
+        }
+
+        public async Task<bool> StringSetBitAsync(string key, long offset,bool bit)
+        {
+            var value = await RedisCache.StringSetBitAsync(key, offset, bit);
             return value;
         }
 
@@ -105,14 +115,62 @@ namespace RedisCacheUsing
 
         public async Task<string?> HashGetLeaseAsync(string key, string field)
         {
-            var aa=await RedisCache.HashGetLeaseAsync(key, field);
+            var aa = await RedisCache.HashGetLeaseAsync(key, field);
             return aa.DecodeString();
         }
-        
-        // list
-        public Task ListSetByIndexAsync(string key, long index, string value)
+
+        public IAsyncEnumerable<HashEntry> HashScanAsync(string key)
         {
-            return RedisCache.ListSetByIndexAsync(key, index, value);
+            return RedisCache.HashScanAsync(key);
+        }
+
+        public IAsyncEnumerable<HashEntry> HashScanAsync(string key,string pattern, int pageSize, int cursor, int pageOffset)
+        {
+            return RedisCache.HashScanAsync(key, pattern, pageSize, cursor, pageOffset);
+        }
+
+
+        // list
+        /// <summary>
+        /// 如果list不存在，则创建，从左侧插入值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public Task<long> ListLeftPushAsync(string key, RedisValue value)
+        {
+            return RedisCache.ListLeftPushAsync(key, value);
+        }
+
+        /// <summary>
+        /// 如果list不存在，则创建，从右侧插入值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public Task<long> ListRightPushAsync(string key, RedisValue value)
+        {
+            return RedisCache.ListRightPushAsync(key, value);
+        }
+        
+        public Task<RedisValue[]> ListRangeAsync(string key, long begin, long stop)
+        {
+            return RedisCache.ListRangeAsync(key, begin, stop);
+        }
+
+        public Task<long> ListLengthAsync(string key)
+        {
+            return RedisCache.ListLengthAsync(key);
+        }
+
+        /// <summary>
+        /// 删除对应缓存
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public Task<bool> KeyDeleteAsync(string key)
+        {
+            return RedisCache.KeyDeleteAsync(key);
         }
     }
 }
