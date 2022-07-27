@@ -91,10 +91,73 @@ namespace RedisCacheUsing
             return result;
         }
 
+        public async Task<RedisValue[]> SetMembersAsync(string key)
+        {
+            var result = await RedisCache.SetMembersAsync(key);
+            return result;
+        }
+
+        /// <summary>
+        /// 并集
+        /// </summary>
+        /// <param name="key1"></param>
+        /// <param name="key2"></param>
+        /// <returns></returns>
+        public async Task<RedisValue[]> SetUnionAsync(string key1,string key2)
+        {
+            var result = await RedisCache.SetCombineAsync(SetOperation.Union, key1, key2);
+            return result;
+        }
+
+        /// <summary>
+        /// 差集
+        /// </summary>
+        /// <param name="key1"></param>
+        /// <param name="key2"></param>
+        /// <returns></returns>
+        public async Task<RedisValue[]> SetDifferenceAsync(string key1, string key2)
+        {
+            var result = await RedisCache.SetCombineAsync(SetOperation.Difference, key1, key2);
+            return result;
+        }
+
+        /// <summary>
+        /// 交集
+        /// </summary>
+        /// <param name="key1"></param>
+        /// <param name="key2"></param>
+        /// <returns></returns>
+        public async Task<RedisValue[]> SetIntersectAsync(string key1, string key2)
+        {
+            var result = await RedisCache.SetCombineAsync(SetOperation.Intersect, key1, key2);
+            return result;
+        }
+
+        public async Task<long> SetCombineAndStoreAsync(string newKey, string key1, string key2)
+        {
+            var result = await RedisCache.SetCombineAndStoreAsync(SetOperation.Union,newKey, key1, key2);
+            return result;
+        }
+
         //SortedSet  
         public Task<long> SortedSetAddAsync(string key, params SortedSetEntry[] sortedSetEntries)
         {
             return RedisCache.SortedSetAddAsync(key, sortedSetEntries);
+        }
+
+        public Task<RedisValue[]> SortedSetRangeByRankAsync(string key, long start, long stop)
+        {
+            return RedisCache.SortedSetRangeByRankAsync(key, start, stop);
+        }
+
+        public Task<long> SortedSetCombineAndStoreAsync(SetOperation operation, RedisKey newKey, RedisKey key1, RedisKey key2)
+        {
+            return RedisCache.SortedSetCombineAndStoreAsync(operation, newKey, key1, key2);
+        }
+
+        public Task<long?> SortedSetRankAsync(RedisKey key,RedisValue member,Order order)
+        {
+            return RedisCache.SortedSetRankAsync(key, member, order);
         }
 
         // hash
@@ -161,6 +224,11 @@ namespace RedisCacheUsing
         public Task<long> ListLengthAsync(string key)
         {
             return RedisCache.ListLengthAsync(key);
+        }
+
+        public Task<RedisValue> ListLengthAsync(string key,long index)
+        {
+            return RedisCache.ListGetByIndexAsync(key, index);
         }
 
         /// <summary>

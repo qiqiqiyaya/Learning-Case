@@ -14,6 +14,12 @@ namespace RedisCacheUsing
 
 
         public const string SetTest1 = "set1";
+        public const string SetTest2 = "set2";
+        public const string SetTest3 = "set3";
+
+        public const string ZSetTest1 = "zset1";
+        public const string ZSetTest2 = "zset2";
+        public const string ZSetTest3 = "zset3";
 
         public const string HashTest1 = "hash1";
 
