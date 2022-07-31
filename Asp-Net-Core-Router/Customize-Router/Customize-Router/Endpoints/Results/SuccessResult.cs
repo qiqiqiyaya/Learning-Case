@@ -6,6 +6,12 @@ namespace Customize_Router.Endpoints.Results
     {
         private readonly T _data;
 
+        public SuccessResult()
+            : this(default!)
+        {
+
+        }
+
         public SuccessResult(T data)
         {
             _data = data;

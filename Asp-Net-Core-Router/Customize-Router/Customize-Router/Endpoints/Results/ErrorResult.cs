@@ -1,17 +1,33 @@
-﻿namespace Customize_Router.Endpoints.Results
-{
-    public class ErrorResult : IEndpointResult
-    {
-        private readonly string _msg;
+﻿using System.Text.Json;
 
+namespace Customize_Router.Endpoints.Results
+{
+    public class ErrorResult : ErrorResult<string>
+    {
         public ErrorResult(string msg)
+            : base(msg)
         {
-            _msg = msg;
+
         }
 
-        public async Task ExecuteAsync(HttpContext context)
+        public override async Task ExecuteAsync(HttpContext context)
         {
-            await context.Response.WriteAsync(_msg);
+            await context.Response.WriteAsync(Data);
+        }
+    }
+
+    public class ErrorResult<T> : IEndpointResult
+    {
+        protected readonly T Data;
+
+        public ErrorResult(T data)
+        {
+            Data = data;
+        }
+
+        public virtual async Task ExecuteAsync(HttpContext context)
+        {
+            await context.Response.WriteAsync(JsonSerializer.Serialize(Data));
         }
     }
 }
