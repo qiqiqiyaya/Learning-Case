@@ -23,7 +23,8 @@ using (var connection = factory.CreateConnection())
         {
             var message = Encoding.UTF8.GetString(ea.Body.ToArray());
             Console.WriteLine(" [x] Received {0}", message);
-            Thread.Sleep(6000); //模拟耗时
+            var aa = new Random();
+            Thread.Sleep(aa.Next(5000)); //模拟耗时
             Console.WriteLine(" [x] Done");
 
             // 7.  发送消息确认信号（手动消息确认)
