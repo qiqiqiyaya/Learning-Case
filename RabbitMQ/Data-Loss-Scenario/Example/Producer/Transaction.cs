@@ -4,7 +4,7 @@ using RabbitMQ.Client;
 
 namespace Producer
 {
-    public class RabbitMqProducer : IMessageProducer
+    public class Transaction
     {
         public void SendMessage<T>(T message)
         {
@@ -25,7 +25,10 @@ namespace Producer
                 var json = JsonConvert.SerializeObject(message);
                 var body = Encoding.UTF8.GetBytes(json);
 
-                channel.BasicPublish(exchange: "", routingKey: "orders", body: body);
+                for (int i = 0; i < 10; i++)
+                {
+                    channel.BasicPublish(exchange: "", routingKey: "orders", body: body);
+                }
                 //throw new Exception("test");
                 channel.TxCommit();
             }
