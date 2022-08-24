@@ -1,21 +1,7 @@
-﻿
-
-using DistributedLock.RedisHelper;
+﻿using DistributedLock.RedisHelper;
 using DistributedLock.Server;
 
-// 入队的code
-int index = 100000;
-while (index > 0)
-{
-    //string msg = Console.ReadLine();
-    new MyRedisSubPublishHelper().PublishMessage("nihaofengge", $"你好风哥：Guid值是：{DateTime.Now}{Guid.NewGuid().ToString()}");
-    Console.WriteLine("发布成功！");
-    index -= 1;
-}
-
-
 // 秒杀的code
-
 try
 {
     Console.WriteLine("秒杀开始。。。。。");
@@ -30,8 +16,7 @@ try
             {
                 long dlong = MyRedisHelper.StringDec("productcount");
                 Console.WriteLine($"秒杀成功，商品库存:{dlong}");
-                pcount -= 1;
-                System.Threading.Thread.Sleep(30);
+                Thread.Sleep(50);
             }
             else
             {
@@ -46,8 +31,6 @@ catch (Exception ex)
 {
     Console.WriteLine($"产品已经秒杀完毕，原因：{ex.Message}");
 }
-Console.ReadKey();
-
 Console.ReadKey();
 
 

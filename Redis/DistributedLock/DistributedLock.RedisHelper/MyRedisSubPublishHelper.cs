@@ -4,14 +4,16 @@ namespace DistributedLock.Server
 {
     public class MyRedisSubPublishHelper
     {
-        private static readonly string redisConnectionStr = "127.0.0.1:6379,connectTimeout=10000,connectRetry=3,syncTimeout=10000";
+        private static readonly string redisConnectionStr = "127.0.0.1:6379,password=123456,abortConnect=false";
         private static readonly ConnectionMultiplexer _connectionMultiplexer;
+        private static readonly IDatabase _database;
 
         static MyRedisSubPublishHelper()
         {
             _connectionMultiplexer = ConnectionMultiplexer.Connect(redisConnectionStr);
+            _database = _connectionMultiplexer.GetDatabase();
         }
-        
+
         #region 发布订阅
         public void Subscriber(string ticName, Action<RedisChannel, RedisValue>? handler = null)
         {
@@ -32,6 +34,7 @@ namespace DistributedLock.Server
                 }
             });
         }
+
         public void PublishMessage(string topticName, string message)
         {
             ISubscriber subscriber = _connectionMultiplexer.GetSubscriber();
@@ -49,7 +52,7 @@ namespace DistributedLock.Server
         /// <returns></returns>
         public static async Task<long> EnqueueListLeftPushAsync(RedisKey queueName, RedisValue redisvalue)
         {
-            return await _connectionMultiplexer.GetDatabase().ListLeftPushAsync(queueName, redisvalue);
+            return await _database.ListLeftPushAsync(queueName, redisvalue);
         }
 
         /// <summary>
@@ -60,13 +63,12 @@ namespace DistributedLock.Server
         /// <exception cref="Exception"></exception>
         public static async Task<string> DequeueListPopRightAsync(RedisKey queueName)
         {
-            IDatabase database = _connectionMultiplexer.GetDatabase();
-            int count = (await database.ListRangeAsync(queueName)).Length;
+            long count = await _database.ListLengthAsync(queueName);
             if (count <= 0)
             {
                 throw new Exception($"队列{queueName}数据为零");
             }
-            string redisValue = await database.ListRightPopAsync(queueName);
+            string redisValue = await _database.ListRightPopAsync(queueName);
             if (!string.IsNullOrEmpty(redisValue))
                 return redisValue;
             else
@@ -79,11 +81,10 @@ namespace DistributedLock.Server
         {
             try
             {
-                IDatabase database = _connectionMultiplexer.GetDatabase();
                 while (true)
                 {
                     expireTimeSeconds = expireTimeSeconds > 20 ? 10 : expireTimeSeconds;
-                    bool lockflag = database.LockTake(key, Thread.CurrentThread.ManagedThreadId, TimeSpan.FromSeconds(expireTimeSeconds));
+                    bool lockflag = _database.LockTake(key, Thread.CurrentThread.ManagedThreadId, TimeSpan.FromSeconds(expireTimeSeconds));
                     if (lockflag)
                     {
                         break;

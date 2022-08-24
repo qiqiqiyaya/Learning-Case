@@ -5,10 +5,13 @@ namespace DistributedLock.RedisHelper
     public class MyRedisHelper
     {
         private static readonly string ConnectionRedisStr;
+        private static readonly IDatabase _database;
+
         static MyRedisHelper()
         {
             //在这里来初始化一些配置信息
-            ConnectionRedisStr = "12.23.45.12:6379,connectTimeout=1000,connectRetry=3,syncTimeout=10000";
+            ConnectionRedisStr = "127.0.0.1:6379,password=123456,abortConnect=false";
+            _database = ConnectionMultiplexer.Connect(ConnectionRedisStr).GetDatabase();
         }
 
         #region Redis string简单的常见同步方法操作
@@ -22,11 +25,7 @@ namespace DistributedLock.RedisHelper
         }
         public static string StringGet(string key)
         {
-            using (var conn = ConnectionMultiplexer.Connect(ConnectionRedisStr))
-            {
-                IDatabase db = conn.GetDatabase();
-                return db.StringGet(key);
-            }
+            return _database.StringGet(key);
         }
 
         public static long StringInc(string key)
@@ -40,11 +39,7 @@ namespace DistributedLock.RedisHelper
 
         public static long StringDec(string key)
         {
-            using (var conn = ConnectionMultiplexer.Connect(ConnectionRedisStr))
-            {
-                IDatabase db = conn.GetDatabase();
-                return db.StringDecrement(key);
-            }
+            return _database.StringDecrement(key);
         }
         public static bool KeyExists(string key)
         {
