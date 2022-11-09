@@ -106,7 +106,7 @@ await service.ListLeftPushAsync(CacheKeys.ListTest1, "test3");
 var leftLength = await service.ListLengthAsync(CacheKeys.ListTest1);
 WriteMsg(CacheKeys.ListTest1, "左侧插入数量 " + leftLength);
 
-await service.ListRightPushAsync(CacheKeys.ListTest1, "test4");
+await service.ListRightPushAsync(CacheKeys.ListTest1, 1);
 await service.ListRightPushAsync(CacheKeys.ListTest1, "test5");
 await service.ListRightPushAsync(CacheKeys.ListTest1, "test6");
 await service.ListRightPushAsync(CacheKeys.ListTest1, "test6");

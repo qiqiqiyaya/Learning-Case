@@ -20,7 +20,7 @@ using (var connection = factory.CreateConnection())
         //4. 申明队列
         channel.QueueDeclare(queue: "hello", durable: false, exclusive: false, autoDelete: false, arguments: null);
         //5. 构建byte消息数据包
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 1; i++)
         {
             //6. 发送数据包
             var body = Encoding.UTF8.GetBytes(i.ToString());

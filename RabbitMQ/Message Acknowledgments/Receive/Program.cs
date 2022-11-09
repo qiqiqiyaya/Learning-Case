@@ -4,6 +4,8 @@ using System.Text;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
+int count = 1;
+
 // 1.实例化连接工厂
 var factory = new ConnectionFactory() { HostName = "localhost" };
 
@@ -22,13 +24,19 @@ using (var connection = factory.CreateConnection())
         consumer.Received += (model, ea) =>
         {
             var message = Encoding.UTF8.GetString(ea.Body.ToArray());
-            Console.WriteLine(" [x] Received {0}", message);
             var aa = new Random();
             Thread.Sleep(aa.Next(5000)); //模拟耗时
-            Console.WriteLine(" [x] Done");
-
-            // 7.  发送消息确认信号（手动消息确认)
-            channel.BasicAck(deliveryTag:ea.DeliveryTag,multiple:false);
+            if (count<=2)
+            {
+                count++;
+                channel.BasicNack(ea.DeliveryTag,false,true);
+            }
+            else
+            {
+                // 7.  发送消息确认信号（手动消息确认)
+                channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
+                Console.WriteLine(" [x] Received {0}", message);
+            }
         };
 
         //8. 启动消费者

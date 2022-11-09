@@ -213,6 +213,7 @@ namespace RedisCacheUsing
         /// <returns></returns>
         public Task<long> ListRightPushAsync(string key, RedisValue value)
         {
+            var aa = RedisCache.ListGetByIndex("", 1);
             return RedisCache.ListRightPushAsync(key, value);
         }
         
