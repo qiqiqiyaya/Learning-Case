@@ -1,7 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using AbpSpecification;
 using Operator;
 using Specification;
+using Specification.AbpSpecification;
 
 Console.WriteLine("Hello, World!");
 
@@ -28,6 +30,13 @@ List<Project> projects = new List<Project>()
         Name ="3",
         ProjectType = ProjectType.C,
         Size = 30
+    },
+    new Project()
+    {
+        Id = "4",
+        Name ="4",
+        ProjectType = ProjectType.C,
+        Size = 20
     }
 };
 
@@ -58,12 +67,30 @@ List<Project> projects = new List<Project>()
 //Console.WriteLine("Expression:" + and.ToExpression());
 
 
-//------------or
-var sizeSpecification = new ProjectSizeSpecification(20);
-var typeSpecification = new ProjectTypeSpecification(ProjectType.C);
+////------------or
+//var sizeSpecification = new ProjectSizeSpecification(20);
+//var typeSpecification = new ProjectTypeSpecification(ProjectType.C);
 
-var or = new OrSpecification<Project>(sizeSpecification, typeSpecification);
-Console.WriteLine("AndSpecification:" + or.IsSatisfiedBy(projects[1]));
-Console.WriteLine("Expression:" + or.ToExpression());
+//var or = new OrSpecification<Project>(sizeSpecification, typeSpecification);
+//Console.WriteLine("AndSpecification:" + or.IsSatisfiedBy(projects[1]));
+//Console.WriteLine("Expression:" + or.ToExpression());
+
+////------------Identity
+//Console.WriteLine("Expression:" + ProjectSizeSpecification.Identity.ToExpression());
+////------------None
+//Console.WriteLine("Expression:" + ProjectSizeSpecification.None.ToExpression());
+
+//------------AndNotSpecification
+var size = new AbpProjectSizeSpecification(20);
+var type = new AbpProjectTypeSpecification(ProjectType.A);
+
+var andNot = new AndNotSpecification<Project>(size, type);
+var expression = andNot.ToExpression();
+Console.WriteLine("Expression:" + expression);
+var result= projects.Where(expression.Compile()).ToList();
+
+var type2 = new AbpProjectTypeSpecification(ProjectType.B);
+var andNot2 = new AndNotSpecification<Project>(size, type2);
+var result2 = projects.Where(andNot2.ToExpression().Compile()).ToList();
 
 Console.ReadKey();
