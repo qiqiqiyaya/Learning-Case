@@ -24,5 +24,11 @@ namespace Operator
         }
 
         public abstract Expression<Func<T, bool>> ToExpression();
+
+
+        public static implicit operator Expression<Func<T, bool>>(Specification<T> specification)
+        {
+            return specification.ToExpression();
+        }
     }
 }
