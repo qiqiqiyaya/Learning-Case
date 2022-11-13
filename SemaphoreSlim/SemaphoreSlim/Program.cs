@@ -2,14 +2,16 @@
 
 Console.WriteLine("Hello, World!");
 
-//SemaphoreTest();
+// SemaphoreTest();
 
-SemaphoreTest1();
+//SemaphoreTest1();
 
-//SemaphoreTest2();
+SemaphoreTest2();
 
 Console.ReadKey();
 
+// 现在有10个人要过桥
+// 但是一座桥上只能承受5个人，再多桥就会塌
 static void SemaphoreTest()
 {
     var semaphore = new SemaphoreSlim(5);
@@ -22,12 +24,12 @@ static void SemaphoreTest()
             semaphore.Wait();
             try
             {
-                Console.WriteLine($"第{index}个人正在过桥。");
+                Console.WriteLine($"第{index}个人正在过桥。线程Id  " + Thread.CurrentThread.ManagedThreadId);
                 Thread.Sleep(5000); // 模拟过桥需要花费的时间
             }
             finally
             {
-                Console.WriteLine($"第{index}个人已经过桥。");
+                Console.WriteLine($"第{index}个人已经过桥。线程Id  " + Thread.CurrentThread.ManagedThreadId);
                 semaphore.Release();
             }
         });
