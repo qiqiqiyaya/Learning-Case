@@ -1,0 +1,376 @@
+2022-11-20 18:03:46.727 +08:00 [INF] App start
+2022-11-20 18:03:48.122 +08:00 [INF] User profile is available. Using 'C:\Users\wwwxi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-11-20 18:03:48.242 +08:00 [WRN] Overriding address(es) 'http://localhost:5039'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2022-11-20 18:03:48.310 +08:00 [INF] Now listening on: https://0.0.0.0:5033
+2022-11-20 18:03:48.312 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-11-20 18:03:48.313 +08:00 [INF] Hosting environment: Development
+2022-11-20 18:03:48.315 +08:00 [INF] Content root path: D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\bin\Debug\net6.0\
+2022-11-20 18:04:51.559 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/ - -
+2022-11-20 18:04:51.597 +08:00 [INF] Executing endpoint '/Index'
+2022-11-20 18:04:51.641 +08:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2022-11-20 18:04:51.654 +08:00 [INF] Executing handler method AspNetCoreAsWindowsServiceTesting.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-11-20 18:04:51.660 +08:00 [INF] Executed handler method OnGet, returned result .
+2022-11-20 18:04:51.665 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-11-20 18:04:51.667 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-11-20 18:04:51.737 +08:00 [INF] Executed page /Index in 89.5302ms
+2022-11-20 18:04:51.740 +08:00 [INF] Executed endpoint '/Index'
+2022-11-20 18:04:51.764 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/ - - - 200 - text/html;+charset=utf-8 207.4794ms
+2022-11-20 18:04:51.795 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - -
+2022-11-20 18:04:51.802 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - - - 200 12036 application/javascript;+charset=utf-8 7.5515ms
+2022-11-20 18:08:26.737 +08:00 [INF] App start
+2022-11-20 18:08:27.359 +08:00 [FTL] Host terminated unexpectedly
+Internal.Cryptography.CryptoThrowHelper+WindowsCryptographicException: 系统找不到指定的文件。
+   at Internal.Cryptography.Pal.CertificatePal.FromBlobOrFile(ReadOnlySpan`1 rawData, String fileName, SafePasswordHandle password, X509KeyStorageFlags keyStorageFlags)
+   at System.Security.Cryptography.X509Certificates.X509Certificate..ctor(String fileName, String password, X509KeyStorageFlags keyStorageFlags)
+   at System.Security.Cryptography.X509Certificates.X509Certificate2..ctor(String fileName, String password)
+   at Microsoft.AspNetCore.Hosting.ListenOptionsHttpsExtensions.UseHttps(ListenOptions listenOptions, String fileName, String password)
+   at Program.<>c.<<Main>$>b__0_4(ListenOptions listenOptions) in D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\Program.cs:line 63
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen(EndPoint endPoint, Action`1 configure)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen(IPAddress address, Int32 port, Action`1 configure)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__2(KestrelServerOptions options) in D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\Program.cs:line 61
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.UnnamedOptionsManager`1.get_Value()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.CreateServiceContext(IOptions`1 options, ILoggerFactory loggerFactory, DiagnosticSource diagnosticSource)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl..ctor(IOptions`1 options, IEnumerable`1 transportFactories, IEnumerable`1 multiplexedFactories, ILoggerFactory loggerFactory, DiagnosticSource diagnosticSource)
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(Type serviceType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.AspNetCore.Builder.WebApplication.get_ServerFeatures()
+   at Microsoft.AspNetCore.Builder.WebApplication..ctor(IHost host)
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\Program.cs:line 67
+2022-11-20 18:08:39.450 +08:00 [INF] App start
+2022-11-20 18:08:40.156 +08:00 [FTL] Host terminated unexpectedly
+Internal.Cryptography.CryptoThrowHelper+WindowsCryptographicException: 系统找不到指定的文件。
+   at Internal.Cryptography.Pal.CertificatePal.FromBlobOrFile(ReadOnlySpan`1 rawData, String fileName, SafePasswordHandle password, X509KeyStorageFlags keyStorageFlags)
+   at System.Security.Cryptography.X509Certificates.X509Certificate..ctor(String fileName, String password, X509KeyStorageFlags keyStorageFlags)
+   at System.Security.Cryptography.X509Certificates.X509Certificate2..ctor(String fileName, String password)
+   at Microsoft.AspNetCore.Hosting.ListenOptionsHttpsExtensions.UseHttps(ListenOptions listenOptions, String fileName, String password)
+   at Program.<>c.<<Main>$>b__0_4(ListenOptions listenOptions) in D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\Program.cs:line 63
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen(EndPoint endPoint, Action`1 configure)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen(IPAddress address, Int32 port, Action`1 configure)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__2(KestrelServerOptions options) in D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\Program.cs:line 61
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.UnnamedOptionsManager`1.get_Value()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.CreateServiceContext(IOptions`1 options, ILoggerFactory loggerFactory, DiagnosticSource diagnosticSource)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl..ctor(IOptions`1 options, IEnumerable`1 transportFactories, IEnumerable`1 multiplexedFactories, ILoggerFactory loggerFactory, DiagnosticSource diagnosticSource)
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(Type serviceType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.AspNetCore.Builder.WebApplication.get_ServerFeatures()
+   at Microsoft.AspNetCore.Builder.WebApplication..ctor(IHost host)
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\Program.cs:line 67
+2022-11-20 18:09:04.547 +08:00 [INF] App start
+2022-11-20 18:09:05.448 +08:00 [INF] User profile is available. Using 'C:\Users\wwwxi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-11-20 18:09:05.576 +08:00 [WRN] Overriding address(es) 'http://localhost:5039'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2022-11-20 18:09:05.646 +08:00 [INF] Now listening on: https://0.0.0.0:5033
+2022-11-20 18:09:05.648 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-11-20 18:09:05.648 +08:00 [INF] Hosting environment: Development
+2022-11-20 18:09:05.649 +08:00 [INF] Content root path: D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\bin\Debug\net6.0\
+2022-11-20 18:09:48.172 +08:00 [INF] App start
+2022-11-20 18:09:49.039 +08:00 [INF] User profile is available. Using 'C:\Users\wwwxi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-11-20 18:09:49.166 +08:00 [WRN] Overriding address(es) 'http://localhost:5039'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2022-11-20 18:09:49.228 +08:00 [INF] Now listening on: http://0.0.0.0:5066
+2022-11-20 18:09:49.230 +08:00 [INF] Now listening on: https://0.0.0.0:5033
+2022-11-20 18:09:49.231 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-11-20 18:09:49.232 +08:00 [INF] Hosting environment: Development
+2022-11-20 18:09:49.233 +08:00 [INF] Content root path: D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\bin\Debug\net6.0\
+2022-11-20 18:09:56.867 +08:00 [INF] Request starting HTTP/1.1 GET http://127.0.0.6:5066/ - -
+2022-11-20 18:09:56.902 +08:00 [INF] Request finished HTTP/1.1 GET http://127.0.0.6:5066/ - - - 307 0 - 38.1842ms
+2022-11-20 18:10:00.631 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.6:5033/ - -
+2022-11-20 18:10:00.650 +08:00 [INF] Executing endpoint '/Index'
+2022-11-20 18:10:00.690 +08:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2022-11-20 18:10:00.702 +08:00 [INF] Executing handler method AspNetCoreAsWindowsServiceTesting.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-11-20 18:10:00.708 +08:00 [INF] Executed handler method OnGet, returned result .
+2022-11-20 18:10:00.712 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-11-20 18:10:00.714 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-11-20 18:10:00.790 +08:00 [INF] Executed page /Index in 93.9696ms
+2022-11-20 18:10:00.793 +08:00 [INF] Executed endpoint '/Index'
+2022-11-20 18:10:00.816 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.6:5033/ - - - 200 - text/html;+charset=utf-8 184.9794ms
+2022-11-20 18:10:00.837 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.6:5033/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2022-11-20 18:10:00.843 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.6:5033/lib/jquery/dist/jquery.min.js - -
+2022-11-20 18:10:00.844 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.6:5033/lib/bootstrap/dist/css/bootstrap.min.css - -
+2022-11-20 18:10:00.844 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.6:5033/AspNetCoreAsWindowsServiceTesting.styles.css?v=_1GtrVT1l21JZrnffD3y38EHkmSv38kfWP-jLXOGMmI - -
+2022-11-20 18:10:00.844 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.6:5033/css/site.css?v=AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL-c - -
+2022-11-20 18:10:00.848 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.6:5033/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - -
+2022-11-20 18:10:00.849 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.6:5033/_framework/aspnetcore-browser-refresh.js - -
+2022-11-20 18:10:00.854 +08:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\wwwroot\js\site.js'
+2022-11-20 18:10:00.857 +08:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\wwwroot\css\site.css'
+2022-11-20 18:10:00.859 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.6:5033/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - - - 200 230 application/javascript 8.9545ms
+2022-11-20 18:10:00.859 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.6:5033/css/site.css?v=AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL-c - - - 200 194 text/css 14.8856ms
+2022-11-20 18:10:00.862 +08:00 [INF] Sending file. Request path: '/AspNetCoreAsWindowsServiceTesting.styles.css'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\obj\Debug\net6.0\scopedcss\bundle\AspNetCoreAsWindowsServiceTesting.styles.css'
+2022-11-20 18:10:00.865 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.6:5033/_framework/aspnetcore-browser-refresh.js - - - 200 12036 application/javascript;+charset=utf-8 13.0200ms
+2022-11-20 18:10:00.867 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.6:5033/AspNetCoreAsWindowsServiceTesting.styles.css?v=_1GtrVT1l21JZrnffD3y38EHkmSv38kfWP-jLXOGMmI - - - 200 1150 text/css 22.8394ms
+2022-11-20 18:10:00.877 +08:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2022-11-20 18:10:00.877 +08:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2022-11-20 18:10:00.877 +08:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\wwwroot\lib\jquery\dist\jquery.min.js'
+2022-11-20 18:10:00.883 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.6:5033/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 200 78468 application/javascript 45.7901ms
+2022-11-20 18:10:00.883 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.6:5033/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162720 text/css 38.7938ms
+2022-11-20 18:10:00.888 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.6:5033/lib/jquery/dist/jquery.min.js - - - 200 89476 application/javascript 50.7338ms
+2022-11-20 18:10:01.022 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.6:5033/favicon.ico - -
+2022-11-20 18:10:01.025 +08:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\wwwroot\favicon.ico'
+2022-11-20 18:10:01.030 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.6:5033/favicon.ico - - - 200 5430 image/x-icon 7.6497ms
+2022-11-20 18:10:22.638 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/ - -
+2022-11-20 18:10:22.639 +08:00 [INF] Executing endpoint '/Index'
+2022-11-20 18:10:22.640 +08:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2022-11-20 18:10:22.642 +08:00 [INF] Executing handler method AspNetCoreAsWindowsServiceTesting.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-11-20 18:10:22.643 +08:00 [INF] Executed handler method OnGet, returned result .
+2022-11-20 18:10:22.644 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-11-20 18:10:22.645 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-11-20 18:10:22.649 +08:00 [INF] Executed page /Index in 7.5608ms
+2022-11-20 18:10:22.650 +08:00 [INF] Executed endpoint '/Index'
+2022-11-20 18:10:22.652 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/ - - - 200 - text/html;+charset=utf-8 14.2992ms
+2022-11-20 18:10:22.673 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - -
+2022-11-20 18:10:22.676 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/AspNetCoreAsWindowsServiceTesting.styles.css?v=_1GtrVT1l21JZrnffD3y38EHkmSv38kfWP-jLXOGMmI - -
+2022-11-20 18:10:22.681 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - - - 200 12036 application/javascript;+charset=utf-8 8.5805ms
+2022-11-20 18:10:22.695 +08:00 [INF] Sending file. Request path: '/AspNetCoreAsWindowsServiceTesting.styles.css'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\obj\Debug\net6.0\scopedcss\bundle\AspNetCoreAsWindowsServiceTesting.styles.css'
+2022-11-20 18:10:22.700 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/AspNetCoreAsWindowsServiceTesting.styles.css?v=_1GtrVT1l21JZrnffD3y38EHkmSv38kfWP-jLXOGMmI - - - 200 1150 text/css 23.7902ms
+2022-11-20 18:12:38.701 +08:00 [INF] App start
+2022-11-20 18:12:39.572 +08:00 [INF] User profile is available. Using 'C:\Users\wwwxi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-11-20 18:12:39.720 +08:00 [INF] Now listening on: http://localhost:5039
+2022-11-20 18:12:39.724 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-11-20 18:12:39.725 +08:00 [INF] Hosting environment: Development
+2022-11-20 18:12:39.726 +08:00 [INF] Content root path: D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\bin\Debug\net6.0\
+2022-11-20 18:12:41.267 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:5039/ - -
+2022-11-20 18:12:41.489 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:5039/ - - - 307 0 - 225.6098ms
+2022-11-20 18:12:50.155 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:5039/ - -
+2022-11-20 18:12:50.158 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:5039/ - - - 307 0 - 2.6938ms
+2022-11-20 18:13:21.658 +08:00 [INF] App start
+2022-11-20 18:13:22.491 +08:00 [INF] User profile is available. Using 'C:\Users\wwwxi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-11-20 18:13:22.771 +08:00 [INF] Now listening on: https://localhost:5033
+2022-11-20 18:13:22.774 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-11-20 18:13:22.777 +08:00 [INF] Hosting environment: Development
+2022-11-20 18:13:22.778 +08:00 [INF] Content root path: D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\bin\Debug\net6.0\
+2022-11-20 18:15:19.884 +08:00 [INF] App start
+2022-11-20 18:15:20.753 +08:00 [INF] User profile is available. Using 'C:\Users\wwwxi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-11-20 18:15:20.865 +08:00 [WRN] Overriding address(es) 'http://localhost:5039'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2022-11-20 18:15:20.928 +08:00 [INF] Now listening on: https://0.0.0.0:5033
+2022-11-20 18:15:20.929 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-11-20 18:15:20.930 +08:00 [INF] Hosting environment: Development
+2022-11-20 18:15:20.931 +08:00 [INF] Content root path: D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\bin\Debug\net6.0\
+2022-11-20 18:15:38.617 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.1:5033/ - -
+2022-11-20 18:15:38.656 +08:00 [INF] Executing endpoint '/Index'
+2022-11-20 18:15:38.701 +08:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2022-11-20 18:15:38.713 +08:00 [INF] Executing handler method AspNetCoreAsWindowsServiceTesting.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-11-20 18:15:38.719 +08:00 [INF] Executed handler method OnGet, returned result .
+2022-11-20 18:15:38.724 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-11-20 18:15:38.727 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-11-20 18:15:38.796 +08:00 [INF] Executed page /Index in 88.8726ms
+2022-11-20 18:15:38.799 +08:00 [INF] Executed endpoint '/Index'
+2022-11-20 18:15:38.821 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.1:5033/ - - - 200 - text/html;+charset=utf-8 206.9653ms
+2022-11-20 18:15:38.847 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.1:5033/css/site.css?v=AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL-c - -
+2022-11-20 18:15:38.847 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.1:5033/lib/jquery/dist/jquery.min.js - -
+2022-11-20 18:15:38.847 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.1:5033/AspNetCoreAsWindowsServiceTesting.styles.css?v=_1GtrVT1l21JZrnffD3y38EHkmSv38kfWP-jLXOGMmI - -
+2022-11-20 18:15:38.858 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.1:5033/lib/bootstrap/dist/css/bootstrap.min.css - -
+2022-11-20 18:15:38.860 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.1:5033/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2022-11-20 18:15:38.862 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.1:5033/_framework/aspnetcore-browser-refresh.js - -
+2022-11-20 18:15:38.863 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.1:5033/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - -
+2022-11-20 18:15:38.867 +08:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\wwwroot\css\site.css'
+2022-11-20 18:15:38.873 +08:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\wwwroot\js\site.js'
+2022-11-20 18:15:38.876 +08:00 [INF] Sending file. Request path: '/AspNetCoreAsWindowsServiceTesting.styles.css'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\obj\Debug\net6.0\scopedcss\bundle\AspNetCoreAsWindowsServiceTesting.styles.css'
+2022-11-20 18:15:38.878 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.1:5033/css/site.css?v=AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL-c - - - 200 194 text/css 30.8176ms
+2022-11-20 18:15:38.878 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.1:5033/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - - - 200 230 application/javascript 16.2089ms
+2022-11-20 18:15:38.881 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.1:5033/_framework/aspnetcore-browser-refresh.js - - - 200 12036 application/javascript;+charset=utf-8 16.2780ms
+2022-11-20 18:15:38.884 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.1:5033/AspNetCoreAsWindowsServiceTesting.styles.css?v=_1GtrVT1l21JZrnffD3y38EHkmSv38kfWP-jLXOGMmI - - - 200 1150 text/css 36.9026ms
+2022-11-20 18:15:38.894 +08:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2022-11-20 18:15:38.894 +08:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\wwwroot\lib\jquery\dist\jquery.min.js'
+2022-11-20 18:15:38.894 +08:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2022-11-20 18:15:38.903 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.1:5033/lib/jquery/dist/jquery.min.js - - - 200 89476 application/javascript 55.2595ms
+2022-11-20 18:15:38.903 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.1:5033/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162720 text/css 44.5483ms
+2022-11-20 18:15:38.903 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.1:5033/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 200 78468 application/javascript 42.7325ms
+2022-11-20 18:15:39.041 +08:00 [INF] Request starting HTTP/2 GET https://127.0.0.1:5033/favicon.ico - -
+2022-11-20 18:15:39.045 +08:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\wwwroot\favicon.ico'
+2022-11-20 18:15:39.049 +08:00 [INF] Request finished HTTP/2 GET https://127.0.0.1:5033/favicon.ico - - - 200 5430 image/x-icon 7.1325ms
+2022-11-20 18:16:00.650 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/ - -
+2022-11-20 18:16:00.651 +08:00 [INF] Executing endpoint '/Index'
+2022-11-20 18:16:00.652 +08:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2022-11-20 18:16:00.654 +08:00 [INF] Executing handler method AspNetCoreAsWindowsServiceTesting.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-11-20 18:16:00.655 +08:00 [INF] Executed handler method OnGet, returned result .
+2022-11-20 18:16:00.657 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-11-20 18:16:00.661 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-11-20 18:16:00.665 +08:00 [INF] Executed page /Index in 11.057ms
+2022-11-20 18:16:00.666 +08:00 [INF] Executed endpoint '/Index'
+2022-11-20 18:16:00.667 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/ - - - 200 - text/html;+charset=utf-8 17.7786ms
+2022-11-20 18:16:00.689 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/AspNetCoreAsWindowsServiceTesting.styles.css?v=_1GtrVT1l21JZrnffD3y38EHkmSv38kfWP-jLXOGMmI - -
+2022-11-20 18:16:00.695 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - -
+2022-11-20 18:16:00.698 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - - - 200 12036 application/javascript;+charset=utf-8 2.3340ms
+2022-11-20 18:16:00.700 +08:00 [INF] Sending file. Request path: '/AspNetCoreAsWindowsServiceTesting.styles.css'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\obj\Debug\net6.0\scopedcss\bundle\AspNetCoreAsWindowsServiceTesting.styles.css'
+2022-11-20 18:16:00.702 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/AspNetCoreAsWindowsServiceTesting.styles.css?v=_1GtrVT1l21JZrnffD3y38EHkmSv38kfWP-jLXOGMmI - - - 200 1150 text/css 13.0245ms
+2022-11-20 18:17:25.559 +08:00 [INF] App start
+2022-11-20 18:17:26.385 +08:00 [FTL] Host terminated unexpectedly
+Internal.Cryptography.CryptoThrowHelper+WindowsCryptographicException: 系统找不到指定的文件。
+   at Internal.Cryptography.Pal.CertificatePal.FromBlobOrFile(ReadOnlySpan`1 rawData, String fileName, SafePasswordHandle password, X509KeyStorageFlags keyStorageFlags)
+   at System.Security.Cryptography.X509Certificates.X509Certificate..ctor(String fileName, String password, X509KeyStorageFlags keyStorageFlags)
+   at System.Security.Cryptography.X509Certificates.X509Certificate2..ctor(String fileName, String password)
+   at Microsoft.AspNetCore.Hosting.ListenOptionsHttpsExtensions.UseHttps(ListenOptions listenOptions, String fileName, String password)
+   at Program.<>c.<<Main>$>b__0_4(ListenOptions listenOptions) in D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\Program.cs:line 63
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen(EndPoint endPoint, Action`1 configure)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen(IPAddress address, Int32 port, Action`1 configure)
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__2(KestrelServerOptions options) in D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\Program.cs:line 61
+   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at Microsoft.Extensions.Options.UnnamedOptionsManager`1.get_Value()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.CreateServiceContext(IOptions`1 options, ILoggerFactory loggerFactory, DiagnosticSource diagnosticSource)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl..ctor(IOptions`1 options, IEnumerable`1 transportFactories, IEnumerable`1 multiplexedFactories, ILoggerFactory loggerFactory, DiagnosticSource diagnosticSource)
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(Type serviceType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.AspNetCore.Builder.WebApplication.get_ServerFeatures()
+   at Microsoft.AspNetCore.Builder.WebApplication..ctor(IHost host)
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\Program.cs:line 67
+2022-11-20 18:17:36.512 +08:00 [INF] App start
+2022-11-20 18:17:37.317 +08:00 [INF] User profile is available. Using 'C:\Users\wwwxi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-11-20 18:17:37.476 +08:00 [WRN] Overriding address(es) 'http://localhost:5039'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2022-11-20 18:17:37.577 +08:00 [INF] Now listening on: https://0.0.0.0:5033
+2022-11-20 18:17:37.580 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-11-20 18:17:37.581 +08:00 [INF] Hosting environment: Development
+2022-11-20 18:17:37.582 +08:00 [INF] Content root path: D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\bin\Debug\net6.0\
+2022-11-20 18:17:39.549 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/ - -
+2022-11-20 18:17:39.587 +08:00 [INF] Executing endpoint '/Index'
+2022-11-20 18:17:39.632 +08:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2022-11-20 18:17:39.647 +08:00 [INF] Executing handler method AspNetCoreAsWindowsServiceTesting.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-11-20 18:17:39.653 +08:00 [INF] Executed handler method OnGet, returned result .
+2022-11-20 18:17:39.657 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-11-20 18:17:39.659 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-11-20 18:17:39.740 +08:00 [INF] Executed page /Index in 99.4869ms
+2022-11-20 18:17:39.743 +08:00 [INF] Executed endpoint '/Index'
+2022-11-20 18:17:39.768 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/ - - - 200 - text/html;+charset=utf-8 221.9666ms
+2022-11-20 18:17:39.790 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - -
+2022-11-20 18:17:39.793 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/AspNetCoreAsWindowsServiceTesting.styles.css?v=_1GtrVT1l21JZrnffD3y38EHkmSv38kfWP-jLXOGMmI - -
+2022-11-20 18:17:39.798 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - - - 200 12036 application/javascript;+charset=utf-8 8.1310ms
+2022-11-20 18:17:39.808 +08:00 [INF] Sending file. Request path: '/AspNetCoreAsWindowsServiceTesting.styles.css'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\obj\Debug\net6.0\scopedcss\bundle\AspNetCoreAsWindowsServiceTesting.styles.css'
+2022-11-20 18:17:39.813 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/AspNetCoreAsWindowsServiceTesting.styles.css?v=_1GtrVT1l21JZrnffD3y38EHkmSv38kfWP-jLXOGMmI - - - 200 1150 text/css 20.0306ms
+2022-11-20 18:17:41.381 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/ - -
+2022-11-20 18:17:41.383 +08:00 [INF] Executing endpoint '/Index'
+2022-11-20 18:17:41.384 +08:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2022-11-20 18:17:41.385 +08:00 [INF] Executing handler method AspNetCoreAsWindowsServiceTesting.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-11-20 18:17:41.387 +08:00 [INF] Executed handler method OnGet, returned result .
+2022-11-20 18:17:41.390 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-11-20 18:17:41.391 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-11-20 18:17:41.394 +08:00 [INF] Executed page /Index in 8.952ms
+2022-11-20 18:17:41.395 +08:00 [INF] Executed endpoint '/Index'
+2022-11-20 18:17:41.399 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/ - - - 200 - text/html;+charset=utf-8 17.8945ms
+2022-11-20 18:17:41.409 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - -
+2022-11-20 18:17:41.410 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - - - 200 12036 application/javascript;+charset=utf-8 1.4549ms
+2022-11-20 18:17:42.208 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/ - -
+2022-11-20 18:17:42.210 +08:00 [INF] Executing endpoint '/Index'
+2022-11-20 18:17:42.211 +08:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2022-11-20 18:17:42.213 +08:00 [INF] Executing handler method AspNetCoreAsWindowsServiceTesting.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-11-20 18:17:42.214 +08:00 [INF] Executed handler method OnGet, returned result .
+2022-11-20 18:17:42.216 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-11-20 18:17:42.217 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-11-20 18:17:42.219 +08:00 [INF] Executed page /Index in 5.7296ms
+2022-11-20 18:17:42.220 +08:00 [INF] Executed endpoint '/Index'
+2022-11-20 18:17:42.221 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/ - - - 200 - text/html;+charset=utf-8 12.7388ms
+2022-11-20 18:17:42.234 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - -
+2022-11-20 18:17:42.236 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - - - 200 12036 application/javascript;+charset=utf-8 1.6211ms
+2022-11-20 18:17:48.996 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/ - -
+2022-11-20 18:17:48.998 +08:00 [INF] Executing endpoint '/Index'
+2022-11-20 18:17:48.999 +08:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2022-11-20 18:17:49.003 +08:00 [INF] Executing handler method AspNetCoreAsWindowsServiceTesting.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-11-20 18:17:49.012 +08:00 [INF] Executed handler method OnGet, returned result .
+2022-11-20 18:17:49.014 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-11-20 18:17:49.017 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-11-20 18:17:49.018 +08:00 [INF] Executed page /Index in 17.0665ms
+2022-11-20 18:17:49.020 +08:00 [INF] Executed endpoint '/Index'
+2022-11-20 18:17:49.022 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/ - - - 200 - text/html;+charset=utf-8 25.6750ms
+2022-11-20 18:17:49.062 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - -
+2022-11-20 18:17:49.076 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - - - 200 12036 application/javascript;+charset=utf-8 14.2472ms
+2022-11-20 18:17:55.964 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/ - -
+2022-11-20 18:17:55.966 +08:00 [INF] Executing endpoint '/Index'
+2022-11-20 18:17:55.970 +08:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2022-11-20 18:17:55.972 +08:00 [INF] Executing handler method AspNetCoreAsWindowsServiceTesting.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-11-20 18:17:55.974 +08:00 [INF] Executed handler method OnGet, returned result .
+2022-11-20 18:17:55.978 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-11-20 18:17:55.979 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-11-20 18:17:55.981 +08:00 [INF] Executed page /Index in 8.5245ms
+2022-11-20 18:17:55.982 +08:00 [INF] Executed endpoint '/Index'
+2022-11-20 18:17:55.984 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/ - - - 200 - text/html;+charset=utf-8 20.4357ms
+2022-11-20 18:17:56.015 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - -
+2022-11-20 18:17:56.018 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - - - 200 12036 application/javascript;+charset=utf-8 2.9562ms
+2022-11-20 18:32:52.239 +08:00 [INF] App start
+2022-11-20 18:32:53.276 +08:00 [INF] User profile is available. Using 'C:\Users\wwwxi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-11-20 18:32:53.411 +08:00 [WRN] Overriding address(es) 'http://localhost:5039'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2022-11-20 18:32:53.480 +08:00 [INF] Now listening on: https://0.0.0.0:5033
+2022-11-20 18:32:53.481 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-11-20 18:32:53.482 +08:00 [INF] Hosting environment: Development
+2022-11-20 18:32:53.483 +08:00 [INF] Content root path: D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\bin\Debug\net6.0\
+2022-11-20 18:35:49.971 +08:00 [INF] App start
+2022-11-20 18:35:50.981 +08:00 [INF] User profile is available. Using 'C:\Users\wwwxi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-11-20 18:35:51.096 +08:00 [WRN] Overriding address(es) 'http://localhost:5039'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2022-11-20 18:35:51.172 +08:00 [INF] Now listening on: https://0.0.0.0:5033
+2022-11-20 18:35:51.173 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-11-20 18:35:51.174 +08:00 [INF] Hosting environment: Development
+2022-11-20 18:35:51.175 +08:00 [INF] Content root path: D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\bin\Debug\net6.0\
+2022-11-20 18:36:45.609 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/ - -
+2022-11-20 18:37:26.766 +08:00 [INF] App start
+2022-11-20 18:37:27.647 +08:00 [INF] User profile is available. Using 'C:\Users\wwwxi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-11-20 18:37:27.828 +08:00 [WRN] Overriding address(es) 'http://localhost:5039'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2022-11-20 18:37:27.895 +08:00 [INF] Now listening on: https://0.0.0.0:5033
+2022-11-20 18:37:27.896 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-11-20 18:37:27.897 +08:00 [INF] Hosting environment: Development
+2022-11-20 18:37:27.897 +08:00 [INF] Content root path: D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\bin\Debug\net6.0\
+2022-11-20 18:37:29.276 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/ - -
+2022-11-20 18:37:29.336 +08:00 [INF] Executing endpoint '/Index'
+2022-11-20 18:37:29.356 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/ - -
+2022-11-20 18:37:29.358 +08:00 [INF] Executing endpoint '/Index'
+2022-11-20 18:37:29.404 +08:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2022-11-20 18:37:29.404 +08:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2022-11-20 18:37:29.418 +08:00 [INF] Executing handler method AspNetCoreAsWindowsServiceTesting.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-11-20 18:37:29.418 +08:00 [INF] Executing handler method AspNetCoreAsWindowsServiceTesting.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-11-20 18:37:29.425 +08:00 [INF] Executed handler method OnGet, returned result .
+2022-11-20 18:37:29.426 +08:00 [INF] Executed handler method OnGet, returned result .
+2022-11-20 18:37:29.431 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-11-20 18:37:29.431 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-11-20 18:37:29.433 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-11-20 18:37:29.433 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-11-20 18:37:29.510 +08:00 [INF] Executed page /Index in 100.0333ms
+2022-11-20 18:37:29.510 +08:00 [INF] Executed page /Index in 100.0335ms
+2022-11-20 18:37:29.516 +08:00 [INF] Executed endpoint '/Index'
+2022-11-20 18:37:29.518 +08:00 [INF] Executed endpoint '/Index'
+2022-11-20 18:37:29.542 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/ - - - 200 - text/html;+charset=utf-8 185.8719ms
+2022-11-20 18:37:29.542 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/ - - - 200 - text/html;+charset=utf-8 269.0995ms
+2022-11-20 18:37:29.588 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - -
+2022-11-20 18:37:29.593 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/AspNetCoreAsWindowsServiceTesting.styles.css?v=_1GtrVT1l21JZrnffD3y38EHkmSv38kfWP-jLXOGMmI - -
+2022-11-20 18:37:29.599 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/AspNetCoreAsWindowsServiceTesting.styles.css?v=_1GtrVT1l21JZrnffD3y38EHkmSv38kfWP-jLXOGMmI - -
+2022-11-20 18:37:29.601 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - - - 200 12036 application/javascript;+charset=utf-8 13.7294ms
+2022-11-20 18:37:29.615 +08:00 [INF] The file /AspNetCoreAsWindowsServiceTesting.styles.css was not modified
+2022-11-20 18:37:29.617 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/AspNetCoreAsWindowsServiceTesting.styles.css?v=_1GtrVT1l21JZrnffD3y38EHkmSv38kfWP-jLXOGMmI - - - 304 - text/css 18.3311ms
+2022-11-20 18:37:29.620 +08:00 [INF] Sending file. Request path: '/AspNetCoreAsWindowsServiceTesting.styles.css'. Physical path: 'D:\My Respository\Learning-Case\AspNetCoreAsWindowsServiceTesting\AspNetCoreAsWindowsServiceTesting\obj\Debug\net6.0\scopedcss\bundle\AspNetCoreAsWindowsServiceTesting.styles.css'
+2022-11-20 18:37:29.623 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/AspNetCoreAsWindowsServiceTesting.styles.css?v=_1GtrVT1l21JZrnffD3y38EHkmSv38kfWP-jLXOGMmI - - - 200 1150 text/css 34.5206ms
+2022-11-20 18:37:29.643 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - -
+2022-11-20 18:37:29.644 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5033/_framework/aspnetcore-browser-refresh.js - - - 200 12036 application/javascript;+charset=utf-8 1.4754ms
