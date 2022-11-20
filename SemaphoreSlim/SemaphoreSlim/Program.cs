@@ -6,7 +6,9 @@ Console.WriteLine("Hello, World!");
 
 //SemaphoreTest1();
 
-SemaphoreTest2();
+//SemaphoreTest2();
+
+SemaphoreTest3();
 
 Console.ReadKey();
 
@@ -72,6 +74,31 @@ static void SemaphoreTest2()
     {
         Thread.Sleep(100); // 排队上桥
         var index = i; // 定义index 避免出现闭包的问题
+        Task.Run(async () =>
+        {
+            Console.WriteLine($"第{index}个人已抵达桥边上。线程Id  " + Thread.CurrentThread.ManagedThreadId);
+            await semaphore.WaitAsync();
+            try
+            {
+                Console.WriteLine($"第{index}个人正在过桥。线程Id  " + Thread.CurrentThread.ManagedThreadId);
+                await Task.Delay(5000);// 模拟过桥需要花费的时间
+            }
+            finally
+            {
+                Console.WriteLine($"第{index}个人已经过桥。线程Id  " + Thread.CurrentThread.ManagedThreadId);
+                semaphore.Release();
+            }
+        });
+    }
+}
+
+static void SemaphoreTest3()
+{
+    for (int i = 1; i <= 10; i++)
+    {
+        var semaphore = new SemaphoreSlim(1);
+        Thread.Sleep(100); // 排队上桥
+        var index = i; 
         Task.Run(async () =>
         {
             Console.WriteLine($"第{index}个人已抵达桥边上。线程Id  " + Thread.CurrentThread.ManagedThreadId);
