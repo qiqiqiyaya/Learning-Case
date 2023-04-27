@@ -1,6 +1,8 @@
-﻿namespace SimpleWorkflow.Activity
+﻿using SimpleWorkflow.Core;
+
+namespace SimpleWorkflow.Activity
 {
-    public class If : Activity
+    public class If : Core.Activity.Activity
     {
         public If(Func<bool> condition, IActivity then, IActivity @else)
         {

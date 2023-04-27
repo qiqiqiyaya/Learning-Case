@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleWorkflow", "SimpleWorkflow\SimpleWorkflow.csproj", "{6E3CEE99-16AA-4A60-A7E0-DC25F9D60A45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleWorkflow.Core", "SimpleWorkflow.Core\SimpleWorkflow.Core.csproj", "{72D19689-DFB9-4997-B0A1-120FE5E27F2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{92ED20F3-FE0E-4145-A6C2-1D165C8146D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{6E3CEE99-16AA-4A60-A7E0-DC25F9D60A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E3CEE99-16AA-4A60-A7E0-DC25F9D60A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E3CEE99-16AA-4A60-A7E0-DC25F9D60A45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72D19689-DFB9-4997-B0A1-120FE5E27F2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72D19689-DFB9-4997-B0A1-120FE5E27F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72D19689-DFB9-4997-B0A1-120FE5E27F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72D19689-DFB9-4997-B0A1-120FE5E27F2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92ED20F3-FE0E-4145-A6C2-1D165C8146D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92ED20F3-FE0E-4145-A6C2-1D165C8146D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92ED20F3-FE0E-4145-A6C2-1D165C8146D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92ED20F3-FE0E-4145-A6C2-1D165C8146D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

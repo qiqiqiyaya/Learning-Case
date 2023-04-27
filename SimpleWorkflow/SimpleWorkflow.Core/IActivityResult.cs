@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SimpleWorkflow
+﻿namespace SimpleWorkflow.Core
 {
     /// <summary>
     /// 一个activity执行后的结果

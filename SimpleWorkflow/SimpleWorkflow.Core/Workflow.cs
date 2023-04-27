@@ -1,6 +1,6 @@
-﻿namespace SimpleWorkflow
+﻿namespace SimpleWorkflow.Core
 {
-    public class Workflow : Activity.Activity, IWorkflow
+    public class Workflow : Core.Activity.Activity, IWorkflow
     {
         public Workflow()
             : this(new List<IActivity>())

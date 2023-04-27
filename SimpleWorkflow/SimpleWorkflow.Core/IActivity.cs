@@ -1,4 +1,4 @@
-﻿namespace SimpleWorkflow
+﻿namespace SimpleWorkflow.Core
 {
     /// <summary>
     /// 一个步骤

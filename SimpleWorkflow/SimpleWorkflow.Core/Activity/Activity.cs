@@ -1,4 +1,4 @@
-﻿namespace SimpleWorkflow.Activity
+﻿namespace SimpleWorkflow.Core.Activity
 {
     public abstract class Activity : IActivity
     {

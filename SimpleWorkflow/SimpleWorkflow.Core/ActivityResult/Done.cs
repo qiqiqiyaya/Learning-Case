@@ -1,4 +1,4 @@
-﻿namespace SimpleWorkflow.ActivityResult
+﻿namespace SimpleWorkflow.Core.ActivityResult
 {
     public class Done : IActivityResult
     {

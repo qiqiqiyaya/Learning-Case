@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleWorkflow.ActivityResult
+namespace SimplePipeline
 {
-   
+    public interface IPipeline
+    {
+        Task ExecuteAsync();
+    }
 }

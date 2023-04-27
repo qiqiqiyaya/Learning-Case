@@ -1,0 +1,4 @@
+﻿namespace SimpleWorkflow.Core.ActivityResult
+{
+   
+}

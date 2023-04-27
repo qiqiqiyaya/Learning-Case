@@ -1,6 +1,8 @@
-﻿namespace SimpleWorkflow.Activity
+﻿using SimpleWorkflow.Core;
+
+namespace SimpleWorkflow.Activity
 {
-    public class FunctionActivity : Activity
+    public class FunctionActivity : Core.Activity.Activity
     {
         public FunctionActivity(Func<Task> action)
         {
