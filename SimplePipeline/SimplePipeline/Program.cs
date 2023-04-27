@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Reflection.Emit;
 using Autofac;
 using SimplePipeline;
 
@@ -14,26 +15,26 @@ var scope = container.BeginLifetimeScope();
 
 
 
-
-
 var builder = new PipelineBuilder(scope,
     new Type[] { typeof(AttendanceSubjectStep), typeof(SubsidySubjectStep) });
 
-var pipe = builder.CreatePipeline(new DataContext());
+var pipe = builder.CreatePipeline(new DataContext(scope));
 await pipe.ExecuteAsync();
 
 Console.Read();
-
-
+//var aa = Delegate.CreateDelegate(typeof(AttendanceSubjectStep), new DynamicMethod(""));
+//aa.DynamicInvoke();
 
 
 public class DataContext : IDataContext
 {
-    public DataContext()
+    public DataContext(ILifetimeScope serviceProvider)
     {
         DynamicProperties = new Dictionary<string, object>();
+        ServiceProvider = serviceProvider;
     }
 
+    public ILifetimeScope ServiceProvider { get; set; }
     public Dictionary<string, object> DynamicProperties { get; set; }
 }
 
