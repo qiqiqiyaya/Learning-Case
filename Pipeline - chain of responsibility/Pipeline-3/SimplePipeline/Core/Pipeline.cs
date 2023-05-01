@@ -2,37 +2,29 @@
 
 namespace SimplePipeline.Core
 {
-    public class Pipeline : IPipeline<BasePipeLineContext>
+    public class Pipeline : IPipeline
     {
         private IEnumerable<HandlerMap> _handlerMaps;
-        private PipelineStatus _status;
+        private PipeLineStatus _status;
         private readonly ILifetimeScope _serviceProvider;
-        private IHeadHandler _headHandler;
 
         public Pipeline(ILifetimeScope serviceProvider)
         {
             _handlerMaps = new List<HandlerMap>();
-            _status = PipelineStatus.Prepare;
+            _status = PipeLineStatus.Prepare;
             _serviceProvider = serviceProvider;
-            PipelineContext = new BasePipeLineContext(_serviceProvider);
+            Context = new PipelineContext(_serviceProvider);
         }
 
-        public IEnumerable<HandlerMap> HandlerMaps => _handlerMaps;
+        public IEnumerable<HandlerMap> Maps => _handlerMaps;
 
-        public BasePipeLineContext PipelineContext { get; }
+        public PipelineContext Context { get; }
 
-        public bool AddHeadHandler(IHeadHandler headHandler)
+        public bool AddHandlerMaps(IEnumerable<HandlerMap> handlerMaps)
         {
-            _headHandler = headHandler;
-            return true;
-        }
-
-        public bool AddHandlers(IEnumerable<HandlerMap> handlerMaps)
-        {
-            // 流水线线运行时，不能向其添加处理器
-            if (_status == PipelineStatus.Running)
+            if (_status == PipeLineStatus.Running)
             {
-                return false;
+                throw new Exception("Can't add handlerMap when pipeline is running.");
             }
 
             _handlerMaps = _handlerMaps.Concat(handlerMaps);
@@ -41,19 +33,18 @@ namespace SimplePipeline.Core
 
         public async Task RunAsync()
         {
-            _status = PipelineStatus.Running;
-            _headHandler?.ExecuteAsync();
+            _status = PipeLineStatus.Running;
             foreach (var map in _handlerMaps)
             {
-                var stepContext = new SubjectExecutionContext(PipelineContext, map.Data);
+                var stepContext = new HandlerExecutionContext(Context, map.Subject);
                 await map.Handler.ExecuteAsync(stepContext);
             }
 
-            _status = PipelineStatus.End;
+            _status = PipeLineStatus.End;
         }
     }
 
-    public enum PipelineStatus
+    public enum PipeLineStatus
     {
         Running,
         End,

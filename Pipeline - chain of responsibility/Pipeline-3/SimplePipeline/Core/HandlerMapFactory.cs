@@ -2,11 +2,11 @@
 
 namespace SimplePipeline.Core
 {
-    public class SubjectHandlerMapFactory : ISubjectHandlerMapFactory
+    public class HandlerMapFactory : IHandlerMapFactory
     {
         private readonly ILifetimeScope _serviceProvider;
 
-        public SubjectHandlerMapFactory(ILifetimeScope serviceProvider)
+        public HandlerMapFactory(ILifetimeScope serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }

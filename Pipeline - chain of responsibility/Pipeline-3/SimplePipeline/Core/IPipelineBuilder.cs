@@ -1,10 +1,7 @@
 ﻿namespace SimplePipeline.Core
 {
-    /// <summary>
-    /// pipeline's Builder
-    /// </summary>
-    public interface IPipelineBuilder<TData>
+    public interface IPipelineBuilder
     {
-        IPipeline<IPipelineContext, TData> Build(List<Subject> data);
+        IPipeline Build(List<Subject> data);
     }
 }

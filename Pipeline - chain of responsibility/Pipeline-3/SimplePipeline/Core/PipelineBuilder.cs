@@ -1,25 +1,24 @@
 ﻿using Autofac;
-using System;
 
 namespace SimplePipeline.Core
 {
     public class PipelineBuilder : IPipelineBuilder
     {
-        private readonly ISubjectHandlerMapFactory _subjectHandlerMapFactory;
+        private readonly IHandlerMapFactory _handlerMapFactory;
         private readonly ILifetimeScope _serviceProvider;
 
-        public PipelineBuilder(ISubjectHandlerMapFactory subjectHandlerMapFactory, ILifetimeScope serviceProvider)
+        public PipelineBuilder(IHandlerMapFactory handlerMapFactory, ILifetimeScope serviceProvider)
         {
-            _subjectHandlerMapFactory = subjectHandlerMapFactory;
+            _handlerMapFactory = handlerMapFactory;
             _serviceProvider = serviceProvider;
         }
 
         public IPipeline Build(List<Subject> data)
         {
-            var handlerMaps = _subjectHandlerMapFactory.Create(data);
+            var subs = _handlerMapFactory.Create(data);
 
             var pipeline = _serviceProvider.Resolve<IPipeline>();
-            pipeline.AddHandlers(handlerMaps);
+            pipeline.AddHandlerMaps(subs);
             return pipeline;
         }
     }

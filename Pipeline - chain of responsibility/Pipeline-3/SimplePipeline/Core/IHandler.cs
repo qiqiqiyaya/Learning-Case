@@ -1,16 +1,7 @@
 ﻿namespace SimplePipeline.Core
 {
-    /// <summary>
-    /// handler
-    /// </summary>
-    public interface IHandler<in THandlerExecutionContext>
-        where THandlerExecutionContext : IHandlerExecutionContext
+    public interface IHandler
     {
-        /// <summary>
-        /// Execute
-        /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
-        Task ExecuteAsync(THandlerExecutionContext context);
+        Task ExecuteAsync(HandlerExecutionContext context);
     }
 }

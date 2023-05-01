@@ -1,34 +1,13 @@
 ﻿namespace SimplePipeline.Core
 {
-    /// <summary>
-    /// pipeline
-    /// </summary>
-    public interface IPipeline<out TPipelineContext, TData>
-        where TPipelineContext : IPipelineContext
+    public interface IPipeline
     {
-        /// <summary>
-        /// all handlers
-        /// </summary>
-        IEnumerable<HandlerMap<TData>> HandlerMaps { get; }
+        IEnumerable<HandlerMap> Maps { get; }
 
-        /// <summary>
-        /// pipeline Context
-        /// </summary>
-        TPipelineContext PipelineContext { get; }
+        public PipelineContext Context { get; }
 
-        public bool AddHeadHandler(IHeadHandler headHandler);
+        public bool AddHandlerMaps(IEnumerable<HandlerMap> handlerMaps);
 
-        /// <summary>
-        /// add Handlers to pipeline
-        /// </summary>
-        /// <param name="handlerMaps"></param>
-        /// <returns></returns>
-        public bool AddHandlers(IEnumerable<HandlerMap<TData>> handlerMaps);
-
-        /// <summary>
-        /// pipeline run
-        /// </summary>
-        /// <returns></returns>
         Task RunAsync();
     }
 }

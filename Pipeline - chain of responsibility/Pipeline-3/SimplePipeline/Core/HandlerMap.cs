@@ -1,24 +1,15 @@
 ﻿namespace SimplePipeline.Core
 {
-    /// <summary>
-    /// Handler Map
-    /// </summary>
-    public class HandlerMap<TData>
+    public class HandlerMap
     {
-        /// <summary>
-        /// Handler
-        /// </summary>
-        public IHandler<IHandlerExecutionContext> Handler { get; set; }
+        public IHandler Handler { get; set; }
 
-        /// <summary>
-        /// data
-        /// </summary>
-        public TData Data { get; set; }
+        public Subject Subject { get; set; }
 
-        public HandlerMap(IHandler<IHandlerExecutionContext> handler, TData data)
+        public HandlerMap(IHandler handler, Subject subject)
         {
             Handler = handler;
-            Data = data;
+            Subject = subject;
         }
     }
 }

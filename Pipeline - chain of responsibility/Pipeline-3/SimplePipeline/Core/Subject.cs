@@ -2,20 +2,9 @@
 
 namespace SimplePipeline.Core
 {
-    /// <summary>
-    /// Subject
-    /// </summary>
     public class Subject
     {
-        /// <summary>
-        /// Name
-        /// </summary>
         public string Name { get; set; } = default!;
-
-        /// <summary>
-        /// Order
-        /// </summary>
-        public int Order { get; set; } 
 
         public static List<Subject> TestData()
         {
@@ -23,8 +12,7 @@ namespace SimplePipeline.Core
 
             var test = new Faker<Subject>()
                 .StrictMode(true)
-                .RuleFor(s => s.Name, f => f.Name.FullName())
-                .RuleFor(s => s.Order, (f, sub) => sub.Order++);
+                .RuleFor(s => s.Name, f => f.Name.FullName());
 
             var data = test.Generate(10);
             return data;
