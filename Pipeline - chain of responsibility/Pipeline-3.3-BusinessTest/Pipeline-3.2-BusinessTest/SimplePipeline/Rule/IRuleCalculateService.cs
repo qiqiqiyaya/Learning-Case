@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimplePipeline
+namespace SimplePipeline.Rule
 {
-    public interface IPipeline
+    public interface IRuleCalculateService
     {
-        Task ExecuteAsync();
+
     }
 }
