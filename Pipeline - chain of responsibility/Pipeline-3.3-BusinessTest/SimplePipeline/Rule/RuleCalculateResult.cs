@@ -2,7 +2,7 @@
 {
     public class RuleCalculateResult
     {
-        public ResultType ResultType { get; set; }
+        public RuleCalculateResultType RuleCalculateResultType { get; set; }
 
         public object Value { get; set; }
     }

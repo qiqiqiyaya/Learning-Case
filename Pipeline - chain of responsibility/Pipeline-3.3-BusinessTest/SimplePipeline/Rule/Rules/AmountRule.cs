@@ -15,7 +15,7 @@ namespace SimplePipeline.Rule.Rules
 
         public override Task<RuleCalculateResult> CalculateAsync(RuleCalculationContext context)
         {
-            return Task.FromResult(new RuleCalculateResult() { ResultType = ResultType.Numerical, Value = Amount });
+            return Task.FromResult(new RuleCalculateResult() { RuleCalculateResultType = RuleCalculateResultType.Numerical, Value = Amount });
         }
     }
 }

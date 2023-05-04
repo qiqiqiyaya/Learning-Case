@@ -44,13 +44,14 @@ namespace SimplePipeline.Rule
 
         public List<Rule> ConvertTree(List<Rule> rules)
         {
+            // TODO convert tree
             return rules;
         }
 
         public List<Rule> ConvertTree(List<OriginalRule> originalRules)
         {
             var rules = GetRules(originalRules);
-            return rules;
+            return ConvertTree(rules);
         }
 
         public void GetJson()

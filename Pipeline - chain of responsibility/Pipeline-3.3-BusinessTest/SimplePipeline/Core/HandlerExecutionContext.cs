@@ -25,6 +25,7 @@ namespace SimplePipeline.Core
 
         public Employee Employee => PipelineContext.Employee;
 
+
         public T GetRequiredService<T>()
             where T : notnull
         {
@@ -33,6 +34,8 @@ namespace SimplePipeline.Core
         }
 
         public List<ScopeCheckLog> CheckLogs { get; }
+
+        public SubjectExecutedResult Result { get; } = new SubjectExecutedResult();
 
         public Task<ScopeCheckResult> ScopeCheck()
         {

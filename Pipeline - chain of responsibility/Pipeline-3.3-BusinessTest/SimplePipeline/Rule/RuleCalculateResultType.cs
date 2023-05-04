@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SimplePipeline.Rule
+﻿namespace SimplePipeline.Rule
 {
-    public enum ResultType
+    public enum RuleCalculateResultType
     {
-        /// <summary>
-        /// bool
-        /// </summary>
-        Boolean = 1,
         /// <summary>
         /// 数值
         /// </summary>
