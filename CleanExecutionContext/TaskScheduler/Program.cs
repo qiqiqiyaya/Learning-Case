@@ -138,16 +138,22 @@ using TaskScheduler;
 
 
 //6.创建一个干净的 ExecutionContext 环境，供使用
-//var scheduler = new QueuedTaskScheduler(2);
-//AsyncLocalTest.Lang.Value = "test";
-//using (new SuppressExecutionContextFlow().CleanEnvironment())
-//{
-//    Task task11 = new Task(() =>
-//    {
-//        var aa = ExecutionContext.Capture();
-//        Console.WriteLine("th线程:" + AsyncLocalTest.Lang.Value);
-//    });
-//    task11.Start(scheduler);
-//}
-//Console.WriteLine("主线程：" + AsyncLocalTest.Lang.Value);
-//Console.Read();
+var scheduler = new QueuedTaskScheduler(2);
+AsyncLocalTest.Lang.Value = "test";
+using (SuppressExecutionContextFlow.CleanEnvironment())
+{
+    Task task11 = new Task(() =>
+    {
+        var aa = ExecutionContext.Capture();
+        Console.WriteLine("task11线程:" + AsyncLocalTest.Lang.Value);
+    });
+    Thread th = new Thread(() =>
+    {
+        var aa = ExecutionContext.Capture();
+        Console.WriteLine("th线程:" + AsyncLocalTest.Lang.Value);
+    });
+    th.Start();
+    task11.Start(scheduler);
+}
+Console.WriteLine("主线程：" + AsyncLocalTest.Lang.Value);
+Console.Read();

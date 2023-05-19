@@ -97,7 +97,6 @@ namespace TaskScheduler
                 throw new ObjectDisposedException(GetType().Name);
             }
 
-            Console.WriteLine(AsyncLocalTest.Lang.Value);
             _blockingTaskQueue.Add(task);
         }
 

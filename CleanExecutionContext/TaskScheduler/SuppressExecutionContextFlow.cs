@@ -2,7 +2,7 @@
 {
     public class SuppressExecutionContextFlow
     {
-        public IDisposable CleanEnvironment()
+        public static IDisposable CleanEnvironment()
         {
             // 阻断 ExecutionContext 流动
             ExecutionContext.SuppressFlow();
