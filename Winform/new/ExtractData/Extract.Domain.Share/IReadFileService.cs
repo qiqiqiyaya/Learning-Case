@@ -2,6 +2,6 @@
 {
     public interface IReadFileService
     {
-        Task ReadFile(string file, PauseToken token, CancellationToken cancellationToken);
+        Task ReadFile(string file, CancellationToken cancellationToken, PauseToken token);
     }
 }

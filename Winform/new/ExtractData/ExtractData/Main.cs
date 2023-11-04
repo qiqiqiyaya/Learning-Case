@@ -122,7 +122,7 @@ namespace ExtractData
             {
                 try
                 {
-                    await _readFileService.ReadFile(file, token, cancellationToken);
+                    await _readFileService.ReadFile(file, cancellationToken, token);
                     if (token.IsPaused) await token.WaitAsync();
 
                     var path = await _fileDataExportService.ExportExcel(Application.StartupPath, token,
@@ -175,6 +175,7 @@ namespace ExtractData
                     service.InitAsync(_cancellationTokenSource.Token).Wait();
                     service.ClearDataAsync().Wait();
                     _logger.LogInformation("应用程序初始化完成");
+                    Thread.Sleep(5000);
                     this.SetPropertyThreadSafe(@this =>
                         {
                             @this.Btn_Close.Enabled = true;
@@ -243,7 +244,7 @@ namespace ExtractData
         private void Btn_OpenExcel_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(_excelPath)) return;
-            var process = new Process();
+            using var process = new Process();
             process.StartInfo = new ProcessStartInfo(_excelPath)
             {
                 UseShellExecute = true

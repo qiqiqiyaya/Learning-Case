@@ -21,7 +21,7 @@ namespace Extract.Domain
             _mediator = mediator;
         }
 
-        public async Task ReadFile(string file, PauseToken token, CancellationToken cancellationToken)
+        public async Task ReadFile(string file, CancellationToken cancellationToken, PauseToken token)
         {
             StreamReader reader = new StreamReader(file, Encoding.UTF8);
             int index = 0;

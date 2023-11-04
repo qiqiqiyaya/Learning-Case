@@ -155,5 +155,6 @@ using (SuppressExecutionContextFlow.CleanEnvironment())
     th.Start();
     task11.Start(scheduler);
 }
+
 Console.WriteLine("主线程：" + AsyncLocalTest.Lang.Value);
 Console.Read();

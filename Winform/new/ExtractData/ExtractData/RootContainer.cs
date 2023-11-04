@@ -11,14 +11,12 @@ namespace ExtractData
             _serviceCollection = serviceCollection;
         }
 
-        public static DisposeAction BeginNewScope(Action<IServiceProvider> action)
+        public static void BeginNewScope(Action<IServiceProvider> action)
         {
-            var serviceProvider = _serviceCollection.BuildServiceProvider();
-            action(serviceProvider);
-            return new DisposeAction(() =>
+            using (var serviceProvider = _serviceCollection.BuildServiceProvider())
             {
-                serviceProvider.Dispose();
-            });
+                action(serviceProvider);
+            }
         }
     }
 }
