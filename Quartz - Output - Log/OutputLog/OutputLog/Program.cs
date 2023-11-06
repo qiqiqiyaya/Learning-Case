@@ -1,4 +1,7 @@
 ﻿using System.Collections.Specialized;
+using log4net;
+using log4net.Core;
+using log4net.Repository.Hierarchy;
 using OutputLog;
 using Quartz;
 using Quartz.Impl;
@@ -25,16 +28,24 @@ await sched.Start();
 // define the job and tie it to our HelloJob class
 IJobDetail job = JobBuilder.Create<HelloJob>()
     .WithIdentity("myJob", "group1")
+    .StoreDurably()
     .Build();
 
-// Trigger the job to run now, and then every 40 seconds
-ITrigger trigger = TriggerBuilder.Create()
-    .WithIdentity("myTrigger", "group1")
-    .StartNow()
-    //.WithSimpleSchedule(x => x
-    //    .WithIntervalInSeconds(40)
-    //    .RepeatForever())
-    .Build();
+await sched.AddJob(job, true);
 
-await sched.ScheduleJob(job, trigger);
+for (int i = 0; i < 150; i++)
+{
+    await Task.Delay(500);
+    // Trigger the job to run now, and then every 40 seconds
+    ITrigger trigger = TriggerBuilder.Create()
+        .WithIdentity(Guid.NewGuid().ToString("N"), "group1")
+        .UsingJobData("index", i)
+        .StartNow()
+        .ForJob("myJob", "group1")
+        .Build();
+
+    await sched.ScheduleJob(trigger);
+}
+
+Console.WriteLine("结束");
 Console.Read();
