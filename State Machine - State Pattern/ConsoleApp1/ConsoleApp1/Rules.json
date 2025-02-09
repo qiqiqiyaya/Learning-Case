@@ -1,0 +1,24 @@
+{
+  "Rules": [
+    {
+      "Name": "金额小于1000自动通过",
+      "Condition": "Amount < 1000",
+      "Actions": [
+        {
+          "Type": "JumpToState",
+          "Target": "CompletedState"
+        }
+      ]
+    },
+    {
+      "Name": "金额大于10000需CEO审批",
+      "Condition": "Amount >= 10000",
+      "Actions": [
+        {
+          "Type": "JumpToState",
+          "Target": "CEOApprovalState"
+        }
+      ]
+    }
+  ]
+}
