@@ -5,8 +5,10 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.Replace(ServiceDescriptor.Singleton<IServer, HttpListenerServer>());
+builder.Services.AddSingleton<TestMiddleware>();
 var app = builder.Build();
 
+app.UseMiddleware<TestMiddleware>();
 app.Run(async context =>
 {
     await context.Response.WriteAsync("Hello World!");
@@ -18,7 +20,7 @@ var serverFeatures = server.Features.Get<IServerAddressesFeature>();
 if (serverFeatures is null)
 {
     serverFeatures = new ServerAddressesFeature();
-    serverFeatures.Addresses.Add("http://localhost:5000/foobar"); // Add the default address to the IServerAddressesFeature
+    serverFeatures.Addresses.Add("http://localhost:5000"); // Add the default address to the IServerAddressesFeature
     server.Features.Set<IServerAddressesFeature>(serverFeatures);
 }
 app.Run();

@@ -11,6 +11,13 @@ namespace Customize_Server
 
         public IFeatureCollection Features { get; } = new FeatureCollection();
 
+        private readonly ILogger<HttpListenerServer> _logger;
+
+        public HttpListenerServer(ILogger<HttpListenerServer> logger)
+        {
+            _logger = logger;
+        }
+
         public void Dispose()
         {
             _listener.Stop();
@@ -23,10 +30,14 @@ namespace Customize_Server
 
             foreach (var address in addressesFeatures.Addresses)
             {
-                _listener.Prefixes.Add(address.TrimEnd('/') + "/");
+                var addr = address.TrimEnd('/') + "/";
+
+                _listener.Prefixes.Add(addr);
+                _logger.LogInformation("Http address " + addr);
                 pathBases.Add(new Uri(address).AbsolutePath.TrimEnd('/'));
             }
 
+            _logger.LogInformation("Http listener start");
             _listener.Start();
 
             while (true)
@@ -37,6 +48,7 @@ namespace Customize_Server
 
             async Task ProcessRequestAsync(HttpListenerContext listenerContext)
             {
+                _logger.LogInformation("http请求进入");
                 FeatureCollection features = new();
                 var requestFeature = CreateRequestFeature(pathBases, listenerContext);
 
@@ -47,10 +59,12 @@ namespace Customize_Server
                 features.Set<IHttpResponseFeature>(responseFeature);
                 features.Set<IHttpResponseBodyFeature>(bodyFeature);
 
+                _logger.LogInformation("创建http上下文");
                 var context = application.CreateContext(features);
                 Exception? exception = null;
                 try
                 {
+                    _logger.LogInformation("执行中间件");
                     await application.ProcessRequestAsync(context);
 
                     var response = listenerContext.Response;
