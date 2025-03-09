@@ -1,0 +1,2 @@
+﻿p, user, document, read, r.sub.Department == r.obj.Department && r.sub.SecurityLevel >= r.obj.ClassificationLevel && r.env.Time.Hour >= 9 && r.env.Time.Hour < 18
+p, user, document, write, r.sub.Department == r.obj.Department && r.sub.SecurityLevel >= 3
