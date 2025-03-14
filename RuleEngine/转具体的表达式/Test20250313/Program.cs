@@ -18,16 +18,12 @@ namespace Test20250313
             var paramList = new List<ParameterExpression>() { param };
             var values = new List<object>() { 1 };
 
-
             var ep = new ExpressionParser(paramList.ToArray(), "count<3", Array.Empty<object>(), null);
             var body = ep.Parse(typeof(bool));
-
 
             //var lambda = Expression.Lambda<Func<int, bool>>(body, param);
             //var func = lambda.Compile();
             //var result = func.Invoke(1);
-
-
 
             var wrappedExpression = WrapExpression<bool>(new List<Expression>() { body },
                 paramList.ToArray(),
@@ -36,9 +32,7 @@ namespace Test20250313
             var func = wrappedExpression.Compile();
             var a = func(values.ToArray());
 
-
             Console.Read();
-            //Expression.Condition()
         }
 
 
