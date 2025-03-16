@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "BlazorWasmTest": {
+      "commandName": "Project",
+      "commandLineArgs": "--urls https://locahost:6001",
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:6001",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development" // 确保是开发环境
+      }
+    }
+  }
+}

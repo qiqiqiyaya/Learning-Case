@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{60FD1CC5-A5E3-4AA7-8BEF-128465FE638E}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElsaServer", "ElsaServer\ElsaServer.csproj", "{08C55CE0-166D-8210-E3AE-A779864BFD83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWasmTest", "BlazorWasmTest\BlazorWasmTest.csproj", "{A493B7DC-829E-495F-9583-A1F231262972}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08C55CE0-166D-8210-E3AE-A779864BFD83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08C55CE0-166D-8210-E3AE-A779864BFD83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08C55CE0-166D-8210-E3AE-A779864BFD83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08C55CE0-166D-8210-E3AE-A779864BFD83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A493B7DC-829E-495F-9583-A1F231262972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A493B7DC-829E-495F-9583-A1F231262972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A493B7DC-829E-495F-9583-A1F231262972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A493B7DC-829E-495F-9583-A1F231262972}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C35AA573-2219-49D6-B9B2-A2B095B5831F}
+	EndGlobalSection
+EndGlobal
