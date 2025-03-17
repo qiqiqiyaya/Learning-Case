@@ -2,12 +2,18 @@ using Elsa.EntityFrameworkCore.Extensions;
 using Elsa.EntityFrameworkCore.Modules.Management;
 using Elsa.EntityFrameworkCore.Modules.Runtime;
 using Elsa.Extensions;
+using Elsa.Workflows.LogPersistence;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddRazorPages();
 builder.Services.AddElsa(elsa =>
 {
     // Configure Management layer to use EF Core.
-    elsa.UseWorkflowManagement(management => management.UseEntityFrameworkCore(ef => ef.UseSqlite()));
+    elsa.UseWorkflowManagement(management =>
+    {
+        management.UseEntityFrameworkCore(ef => ef.UseSqlite());
+        management.SetDefaultLogPersistenceMode(LogPersistenceMode.Include);
+    });
 
     // Configure Runtime layer to use EF Core.
     elsa.UseWorkflowRuntime(runtime => runtime.UseEntityFrameworkCore(ef => ef.UseSqlite()));
@@ -61,6 +67,7 @@ builder.Services.AddHealthChecks();
 // Build the web application.
 var app = builder.Build();
 
+app.MapRazorPages();
 // Configure web application's middleware pipeline.
 app.UseCors();
 app.UseAuthentication();

@@ -1,0 +1,15 @@
+﻿@page "/"
+@using Elsa.Http
+@model ElsaServer.IndexModel
+@{
+    Layout = null;
+}
+@inject IRouteTable _routeTable
+
+<p>Count: @_routeTable.Count()</p>
+<ul>
+    @foreach (var route in _routeTable)
+    {
+        <li>@route.Route</li>
+    }
+</ul>
