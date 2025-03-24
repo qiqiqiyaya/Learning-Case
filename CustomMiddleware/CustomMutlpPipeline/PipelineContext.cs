@@ -1,4 +1,4 @@
-﻿namespace CustomMiddleware
+﻿namespace CustomMutlpPipeline
 {
     public class PipelineContext
     {

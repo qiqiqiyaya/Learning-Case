@@ -1,6 +1,6 @@
-﻿namespace CustomMiddleware
+﻿namespace CustomMutlpPipeline
 {
-    public class PipelineBuilder
+    public class PipelineBuilder : IPipelineBuilder
     {
         private readonly List<Pipe> _pipes = new List<Pipe>();
 

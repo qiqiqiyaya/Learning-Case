@@ -22,7 +22,6 @@ namespace CustomMiddleware
             builder.Use(new SubjectPipe());
 
             var pipeline = builder.Build("testPipeline");
-
             await pipeline.ExecuteAsync(new PipelineContext());
 
 
