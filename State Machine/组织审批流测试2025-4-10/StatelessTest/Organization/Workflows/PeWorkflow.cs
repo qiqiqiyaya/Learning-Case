@@ -64,7 +64,6 @@ namespace StatelessTest.Organization.Workflows
 
         public async ValueTask<WorkflowEntity> CreateAsync()
         {
-
             var entity = new WorkflowEntity()
             {
                 State = State,

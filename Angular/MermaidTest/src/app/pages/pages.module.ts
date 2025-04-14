@@ -9,6 +9,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { FormsModule } from '@angular/forms';
 import { DynamicGenerateFlowchartComponent } from './dynamic-generate-flowchart/dynamic-generate-flowchart.component';
 import { FlowchartEventComponent } from './flowchart-event/flowchart-event.component';
+import { MermaidScriptComponent } from './mermaid-script/mermaid-script.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { FlowchartEventComponent } from './flowchart-event/flowchart-event.compo
   declarations: [
     FlowchartEventComponent,
     DynamicGenerateFlowchartComponent,
+    MermaidScriptComponent
   ],
 })
 export class PagesModule { }

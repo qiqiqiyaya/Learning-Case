@@ -26,9 +26,13 @@ namespace StatelessTest.Organization.Services
             var flow = await _peWorkflow.CreateAsync();
             pe.WorkflowId = flow.Id;
 
+            await _dbContext.Pes.AddAsync(pe);
             return pe;
         }
 
-
+        public void Trigger(string eventName)
+        {
+            _peWorkflow.Trigger(eventName);
+        }
     }
 }

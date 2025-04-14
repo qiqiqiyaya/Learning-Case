@@ -1,5 +1,10 @@
-﻿using Stateless.Graph;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Stateless.Graph;
 using Stateless;
+using StatelessTest.Organization;
+using StatelessTest.Organization.Services;
+using StatelessTest.Organization.Workflows;
 
 namespace StatelessTest
 {
@@ -7,75 +12,26 @@ namespace StatelessTest
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello, World!");
+            ServiceCollection service = new ServiceCollection();
+            service.AddDbContext<OrgDbContext>(options =>
+            {
+                options.UseInMemoryDatabase("test");
+                options.UseSeeding((dbContext, a) =>
+                {
+                    if (dbContext is OrgDbContext db)
+                    {
+                        SeedData.Initialize(db);
+                    }
+                });
+            });
 
-            //Bug bug = new Bug("Hello World!");
+            service.AddTransient<IPeService, PeService>();
+            service.AddTransient<IWorkflow, PeWorkflow>();
 
-            //Console.WriteLine($"Current State: {bug.CurrentState}");
+            using (var scope = service.BuildServiceProvider())
+            {
 
-            //bug.Assign("Lamond Lu");
-
-            //Console.WriteLine($"Current State: {bug.CurrentState}");
-            //Console.WriteLine($"Current Assignee: {bug.Assignee}");
-
-            //bug.Defer();
-
-            //Console.WriteLine($"Current State: {bug.CurrentState}");
-            //Console.WriteLine($"Current Assignee: {bug.Assignee}");
-
-            //bug.Assign("Lu Nan");
-
-            //Console.WriteLine($"Current State: {bug.CurrentState}");
-            //Console.WriteLine($"Current Assignee: {bug.Assignee}");
-
-            //bug.Close();
-
-            //var info = bug.GetInfo();
-            //var aa = UmlDotGraph.Format(info);
-
-            //Console.WriteLine($"Current State: {bug.CurrentState}");
-
-            ApprovalProcess ap = new ApprovalProcess();
-
-            ap.SecondApprovedPass();
-
-            ap.Submit();
-            Console.WriteLine($"action: Submit");
-            Console.WriteLine($"Current State: {ap.CurrentState}");
-
-            ap.FirstApprovedPass();
-            Console.WriteLine($"action: FirstApprovedPass");
-            Console.WriteLine($"Current State: {ap.CurrentState}");
-
-            ap.Reject();
-            Console.WriteLine($"action: Reject");
-            Console.WriteLine($"Current State: {ap.CurrentState}");
-
-            ap.Rewrite();
-            Console.WriteLine($"action: Rewrite");
-            Console.WriteLine($"Current State: {ap.CurrentState}");
-
-            ap.Submit();
-            Console.WriteLine($"action: Submit");
-            Console.WriteLine($"Current State: {ap.CurrentState}");
-
-            ap.FirstApprovedPass();
-            Console.WriteLine($"action: FirstApprovedPass");
-            Console.WriteLine($"Current State: {ap.CurrentState}");
-
-            ap.SecondApprovedPass();
-            Console.WriteLine($"action: SecondApprovedPass");
-            Console.WriteLine($"Current State: {ap.CurrentState}");
-            //ap.Submit();
-            //Console.WriteLine($"Current State: {ap.CurrentState}");
-            //ap.Submit();
-            //Console.WriteLine($"Current State: {ap.CurrentState}");
-
-            var info = ap.GetInfo();
-            var aa = UmlDotGraph.Format(info);
-
-            Console.Read();
-
+            }
         }
     }
 }
