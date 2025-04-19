@@ -1,0 +1,20 @@
+<form nz-form nzLayout="inline" [formGroup]="this.form">
+  <nz-form-item>
+    <nz-form-label>Trigger</nz-form-label>
+    <nz-form-control>
+      <input nz-input formControlName="Trigger" placeholder="input placeholder" />
+    </nz-form-control>
+  </nz-form-item>
+  
+  <nz-form-item>
+    <nz-form-label>DestinationState</nz-form-label>
+    <nz-form-control>
+      <input nz-input formControlName="DestinationState" placeholder="input placeholder" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <button nz-button nzType="primary" nzDanger (click)="toDelete()">Delete</button>
+  </nz-form-item>
+
+</form>

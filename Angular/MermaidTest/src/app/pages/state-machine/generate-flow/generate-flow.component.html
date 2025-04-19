@@ -1,0 +1,9 @@
+
+
+
+<input nz-input placeholder="初始状态" [(ngModel)]="this.initalState" [nzBorderless]="!!this.initalState" />
+
+<app-state-machine *ngIf="!!this.initalState" [initalState]="this.initalState" (valueChange)="valueChange($event)"></app-state-machine>
+
+
+{{ this.json }}

@@ -1,0 +1,15 @@
+<nz-card [nzTitle]="stateRepresentationTitle" [nzExtra]="extraTemplate"> 
+  <button nz-button nzType="primary" (click)="add()">Add Transition</button>
+
+  <ng-container *ngFor="let transition of this.sr.Transitions">
+    <app-transition [state]="this.sr.State" [value]="transition" (delete)="trDelete($event)"></app-transition>
+  </ng-container>
+</nz-card>
+
+<ng-template #stateRepresentationTitle>
+  <input nz-input placeholder="input state" [(ngModel)]="this.sr.State" [nzBorderless]="!!this.sr.State" />
+</ng-template>
+
+<ng-template #extraTemplate>
+  <button nz-button nzType="primary" nzDanger (click)="toDelete()">Delete</button>
+</ng-template>

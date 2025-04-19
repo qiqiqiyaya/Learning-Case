@@ -28,7 +28,6 @@ export class FlowchartEventComponent implements OnInit {
 
   @HostListener('window:mermaid-click', ['$event'])
   mermaidClick(e: CustomEvent) {
-    debugger;
   }
 
   constructor(@Inject(PLATFORM_ID) private _platformId: object,
@@ -46,7 +45,6 @@ export class FlowchartEventComponent implements OnInit {
   ngOnInit() {
     const aa = window as any;
     aa.callback = function (e: any, b: any, c: any) {
-      debugger;
       alert('A callback was triggered');
     };
   }
