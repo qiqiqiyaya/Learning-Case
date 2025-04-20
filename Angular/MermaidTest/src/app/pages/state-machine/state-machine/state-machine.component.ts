@@ -14,26 +14,31 @@ import { StateRepresentation } from '../models/state-representation';
 export class StateMachineComponent implements OnInit {
   private readonly msg = inject(NzMessageService);
 
-  @Input() initalState: string;
   @Output() valueChange = new EventEmitter<StateMachine>();
 
-  sm: StateMachine = new StateMachine("Edit");
+  @Input() sm: StateMachine;
   graph: string;
 
   constructor() { }
 
   ngOnInit() {
-    this.sm.valueChange.pipe(debounceTime(500)).subscribe(res => {
-      this.graph = MermaidHelper.generate(res);
-    });
-    this.sm.valueChange.subscribe(res => this.valueChange.emit(res));
+    this.initSm();
+  }
+
+  initSm(){
+    if(this.sm){
+      this.sm.valueChange.pipe(debounceTime(500)).subscribe(res => {
+        this.graph = MermaidHelper.generate(res);
+      });
+      this.sm.valueChange.subscribe(res => this.valueChange.emit(res));
+    }
   }
 
   add() {
-    this.sm.newStateConfiguration();
+    this.sm?.newStateConfiguration();
   }
 
   delete(sr: StateRepresentation) {
-    this.sm.remove(sr);
+    this.sm?.remove(sr);
   }
 }

@@ -1,8 +1,17 @@
-import { ValueChange } from "./value-change";
+import { BaseFunc } from "./base-func";
 
-export class Transition extends ValueChange<Transition> {
+export class Transition extends BaseFunc<Transition> {
     private _trigger: string;
     private _destinationState: string;
+
+    constructor()
+    constructor(trigger: string, destinationState: string)
+    constructor(trigger?: string, destinationState?: string) {
+        super();
+
+        if (trigger) this.Trigger = trigger;
+        if (destinationState) this.DestinationState = destinationState;
+    }
 
     get Trigger() {
         return this._trigger;
@@ -10,8 +19,8 @@ export class Transition extends ValueChange<Transition> {
 
     set Trigger(value: string) {
         this._trigger = value;
+        this.setJsonProperty("Trigger", value);
         this.valueChange.emit(this);
-        console.log(this);
     }
 
     get DestinationState() {
@@ -20,11 +29,7 @@ export class Transition extends ValueChange<Transition> {
 
     set DestinationState(value: string) {
         this._destinationState = value;
+        this.setJsonProperty("DestinationState", value);
         this.valueChange.emit(this);
-        console.log(this);
-    }
-
-    getJson(): string {
-        return JSON.stringify({ Trigger: this._trigger, DestinationState: this._destinationState });
     }
 }

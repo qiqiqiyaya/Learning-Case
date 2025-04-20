@@ -1,6 +1,6 @@
 import { Subscription, combineLatest, merge } from "rxjs";
 import { StateRepresentation } from "./state-representation";
-import { ValueChange } from "./value-change";
+import { BaseFunc } from "./base-func";
 
 
 export class KeyValuePair<TKey, TValue> {
@@ -22,11 +22,16 @@ export class Dictionary<TKey extends number | string, TValue> {
     [key: string | number]: any;
 }
 
-export class StateMachine extends ValueChange<StateMachine> {
+
+
+
+
+export class StateMachine extends BaseFunc<StateMachine> {
     private _mergeSub: Subscription;
-    private _initialState: string;
-    private _currentState: string;
-    private _stateConfiguration: StateRepresentation[] = [];
+
+    protected _initialState: string;
+    protected _currentState: string;
+    protected _stateConfiguration: StateRepresentation[] = [];
 
     constructor(initalState: string) {
         super();
@@ -41,6 +46,7 @@ export class StateMachine extends ValueChange<StateMachine> {
     }
     private set InitialState(value: string) {
         this._initialState = value;
+        this.setJsonProperty("InitialState", value);
         this.valueChange.emit();
     }
 
@@ -52,6 +58,7 @@ export class StateMachine extends ValueChange<StateMachine> {
     }
     set CurrentState(value: string) {
         this._currentState = value;
+        this.setJsonProperty("CurrentState", value);
         this.valueChange.emit();
     }
 
@@ -59,7 +66,7 @@ export class StateMachine extends ValueChange<StateMachine> {
         if (this.StateConfiguration.length == 0) return new Dictionary();
 
         debugger;
-        const aa= this.StateConfiguration.reduce(function (r, a) {
+        const aa = this.StateConfiguration.reduce(function (r, a) {
             r[a.State] = r[a.State] || [];
             r[a.State].push(a);
             return r;
@@ -75,9 +82,11 @@ export class StateMachine extends ValueChange<StateMachine> {
         return this._stateConfiguration;
     }
 
-    newStateConfiguration(): StateRepresentation {
-        const sr = new StateRepresentation();
+    newStateConfiguration(state?: string): StateRepresentation {
+        const sr = new StateRepresentation(state);
         this.StateConfiguration.push(sr);
+
+        this.setJsonProperty("StateConfiguration", this.StateConfiguration.map(s => s.JsonObject));
         this.merge();
         return sr;
     }
@@ -101,16 +110,26 @@ export class StateMachine extends ValueChange<StateMachine> {
         }
     }
 
-    getJson(): string {
-        // debugger;
-        // var aa = this.StateConfigurationMap;
+    /**
+     * 配置
+     */
+    Configure(state: string): StateRepresentation {
+        const sr = this.getState(state);
+        if (sr) return sr;
+        return this.newStateConfiguration(state);
+    }
 
-        // var map = new Map<String, any>();
-        // map.set("InitialState", this.InitialState);
-        // map.set("CurrentState", this.CurrentState);
-        // map.set("StateConfiguration", this.StateConfigurationMap);
-
-        return '';
+    /**
+     * 是否配置过指定状态
+     * @param state 状态
+     * @returns 
+     */
+    getState(state: string): StateRepresentation | null {
+        const index = this.StateConfiguration.findIndex(x => x.State == state);
+        if (index > -1) {
+            return this.StateConfiguration[index];
+        }
+        return null;
     }
 
     destroy() {

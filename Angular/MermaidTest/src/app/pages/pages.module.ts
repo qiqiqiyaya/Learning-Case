@@ -13,7 +13,8 @@ import { StateRepresentationComponent } from './state-machine/state-representati
 import { TransitionComponent } from './state-machine/transition/transition.component';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { ComponentModule } from './state-machine/components/component.module';
-import { GenerateFlowComponent } from './state-machine/generate-flow/generate-flow.component';
+import { GenerateFlowComponent } from './generate-flow/generate-flow.component';
+import { FlowApprovalComponent } from './flow-approval/flow-approval.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { GenerateFlowComponent } from './state-machine/generate-flow/generate-fl
     StateMachineComponent,
     StateRepresentationComponent,
     TransitionComponent,
-    GenerateFlowComponent
+    GenerateFlowComponent,
+    FlowApprovalComponent
   ],
 })
 export class PagesModule { }

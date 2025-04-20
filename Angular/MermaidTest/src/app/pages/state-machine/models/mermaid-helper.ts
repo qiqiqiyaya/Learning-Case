@@ -11,16 +11,16 @@ export class MermaidHelper {
                 if (tr.DestinationState) {
                     mermaidString += `    ${sr.State} --> `;
                     if (tr.Trigger) {
-                        mermaidString += `|${tr.Trigger}|`;
+                        mermaidString += `| ${tr.Trigger} |`;
                     }
-                    mermaidString += `${tr.DestinationState}\n`;
+                    mermaidString += ` ${tr.DestinationState} \n`;
                 }
             });
         });
 
         if (mermaidString == '') return mermaidString;
 
-        mermaidString = 'flowchart TD\n' + mermaidString;
+        mermaidString = 'flowchart TD \n' + mermaidString;
         return mermaidString;
     }
 }

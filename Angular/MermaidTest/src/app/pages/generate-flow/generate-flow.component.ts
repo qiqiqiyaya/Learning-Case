@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StateMachine } from '../models/state-machine';
+import { StateMachine } from '../state-machine/models/state-machine';
 
 @Component({
   selector: 'app-generate-flow',
@@ -10,7 +10,7 @@ import { StateMachine } from '../models/state-machine';
 export class GenerateFlowComponent implements OnInit {
 
   initalState: string;
-  sm: StateMachine;
+  sm: StateMachine = new StateMachine("Edit");
   json:string;
   constructor() { }
 
@@ -18,7 +18,7 @@ export class GenerateFlowComponent implements OnInit {
   }
 
   valueChange(sm: StateMachine) {
-    this.sm=sm;
-    this.json=sm.getJson();
+    this.sm = sm;
+    this.json=JSON.stringify(this.sm.JsonObject);
   }
 }

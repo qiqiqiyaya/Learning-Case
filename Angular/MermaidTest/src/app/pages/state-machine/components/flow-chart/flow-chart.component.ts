@@ -23,7 +23,7 @@ export class FlowChartComponent implements OnInit {
   }
 
   async load() {
-    if (this.graph == null || this.graph == undefined) return;
+    if (!this.graph) return;
     /* diagram html id，必须要添加的 */
     const result = await mermaid.render("diagram", this.graph);
     /* bypassSecurityTrustHtml 生成安全 html */

@@ -1,10 +1,9 @@
+<ng-container *ngIf="this.sm">
+  <button nz-button nzType="primary" (click)="add()">Config</button>
 
+  <ng-container *ngFor="let sr of this.sm.StateConfiguration">
+    <app-state-representation [sr]="sr" (delete)="delete($event)"></app-state-representation>
+  </ng-container>
 
-<button nz-button nzType="primary" (click)="add()">Config</button>
-
-
-<ng-container *ngFor="let sr of this.sm.StateConfiguration">
-  <app-state-representation [sr]="sr" (delete)="delete($event)"></app-state-representation>
+  <app-flow-chart [graph]="this.graph"></app-flow-chart>
 </ng-container>
-
-<app-flow-chart [graph]="this.graph"></app-flow-chart>
