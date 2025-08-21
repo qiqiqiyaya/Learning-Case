@@ -1,7 +1,9 @@
-﻿namespace ConsoleApp1
+﻿using ConsoleApp1.Interceptors;
+
+namespace ConsoleApp1
 {
-	internal interface IOrderingService
-	{
-		Task<int> Get(string id);
-	}
+    public interface IOrderingService : ITrackedLog
+    {
+        Task<int> Get(string id);
+    }
 }

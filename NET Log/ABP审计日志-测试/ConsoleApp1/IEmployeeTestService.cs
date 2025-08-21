@@ -1,7 +1,9 @@
-﻿namespace ConsoleApp1
+﻿using ConsoleApp1.Interceptors;
+
+namespace ConsoleApp1
 {
-	public interface IEmployeeTestService
-	{
-		Task GetEmployeeAsync();
-	}
+    public interface IEmployeeTestService : ITrackedLog
+    {
+        Task GetEmployeeAsync();
+    }
 }

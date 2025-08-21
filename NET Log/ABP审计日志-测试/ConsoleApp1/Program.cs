@@ -10,7 +10,7 @@ namespace ConsoleApp1
         {
             var app = AbpApplicationFactory.Create<TestAuditModule>(options =>
             {
-
+                options.UseAutofac();
             });
             app.Initialize();
             var serviceProvider = app.CreateServiceProvider();

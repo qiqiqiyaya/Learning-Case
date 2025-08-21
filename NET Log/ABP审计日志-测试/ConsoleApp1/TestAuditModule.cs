@@ -3,18 +3,20 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Volo.Abp;
 using Volo.Abp.Auditing;
+using Volo.Abp.Castle;
 using Volo.Abp.Modularity;
 
 namespace ConsoleApp1
 {
-    [DependsOn(typeof(AbpAuditingModule))]
+    [DependsOn(typeof(AbpAuditingModule),
+        typeof(AbpCastleCoreModule))]
     public class TestAuditModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.OnRegistered(options =>
             {
-                if (options.ImplementationType.IsDefined(typeof(TestAttribute), true))
+                if (options.ImplementationType.GetInterfaces().Any(x => x == typeof(ITrackedLog)))
                 {
                     options.Interceptors.TryAdd<TestInterceptor>();
                 }
